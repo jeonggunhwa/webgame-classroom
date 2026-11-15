@@ -3,26 +3,34 @@
 const BASE='classrooms/webgame-v1', OWNER='jminjoo3@gmail.com';
 const copy=x=>JSON.parse(JSON.stringify(x)), same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
 let auth,db,ref,seed,model,user=null,teacher=false,connected=false,ready=false,started=false,unsubs=[],answerOff=[],questionOff=null,questionAllowed=null,generation=0,pendingEntry=false;
+let entryDenied=false,privateSettings=null,entryMetaVersion=0,ownPassVersion=0,entryFailures=0,entryBlockedUntil=0;
+const validCode=v=>typeof v==='string'&&/^[0-9]{4}$/.test(v);
+const currentPass=()=>entryMetaVersion>0&&ownPassVersion===entryMetaVersion;
+function randomParticipationCode(){const a=new Uint32Array(1);do{crypto.getRandomValues(a);}while(a[0]>=4294960000);return String(a[0]%10000).padStart(4,'0');}
 const events=new EventTarget();
 const emit=(name,detail)=>events.dispatchEvent(new CustomEvent(name,{detail}));
 const validProfile=(p,id)=>!!p&&p.person===id&&typeof p.studentNo==='string'&&/^[0-9]{2,12}$/.test(p.studentNo)&&typeof p.name==='string'&&p.name.trim().length>=1&&p.name.length<=40&&p.name===p.name.trim()&&Number.isFinite(p.created)&&p.created>0&&typeof p.approved==='boolean';
-const entered=()=>!pendingEntry&&!!user&&user.isAnonymous&&validProfile(model?.enrollments.find(e=>e.person===user.uid),user.uid);
+const entered=()=>!pendingEntry&&!entryDenied&&currentPass()&&!!user&&user.isAnonymous&&validProfile(model?.enrollments.find(e=>e.person===user.uid),user.uid);
 const admitted=()=>teacher||(entered()&&(!model.policies.gate||model.enrollments.find(e=>e.person===user.uid)?.approved===true));
-const status=()=>({uid:user?.uid||null,teacher,connected,ready,entered:entered(),entering:pendingEntry,configured:!!ref});
+const status=()=>({uid:user?.uid||null,teacher,connected,ready,entered:entered(),entering:pendingEntry,configured:!!ref,codeReady:entryMetaVersion>0,entryMetaVersion});
 const fail=e=>{const message=e?.message||String(e);emit('error',/permission_denied|permission denied|permission-denied/i.test(message)?'입장 정보 또는 수업 접근 권한이 변경되었습니다. 학번과 이름을 다시 확인해주세요.':message);};
 function listen(path,fn,list=unsubs){const r=ref.child(path),cb=s=>fn(s.val());r.on('value',cb,fail);list.push(()=>r.off('value',cb));}
 function publish(){if(model)emit('state',copy(model));emit('status',status());}
 function records(v){return Object.entries(v||{}).map(([id,x])=>({...x,id}));}
 function syncQuestions(){const allowed=!!user&&admitted();if(allowed===questionAllowed)return;questionAllowed=allowed;if(questionOff){questionOff();questionOff=null;}model.questions=[];if(allowed){const r=ref.child('questions'),cb=s=>{model.questions=records(s.val()).map(q=>({...q,voters:Object.keys(q.votes||{}).filter(k=>q.votes[k]===true)}));publish();};r.on('value',cb,fail);questionOff=()=>r.off('value',cb);}}
 function ownAnswers(){answerOff.forEach(f=>f());answerOff=[];if(teacher)return;model.answers={};if(!user||!entered())return;for(const s of model.slides.filter(s=>s.kind==='quiz'))listen('answers/'+s.id+'/'+user.uid,v=>{model.answers[s.id]=v===null?{}:{[user.uid]:v};publish();},answerOff);}
-async function bind(u){const gen=++generation;if(questionOff)questionOff();questionOff=null;questionAllowed=null;unsubs.forEach(f=>f());answerOff.forEach(f=>f());unsubs=[];answerOff=[];user=u;teacher=false;ready=false;pendingEntry=false;model=copy(seed);model.publicReviews=[];publish();if(!u)return;
+async function bind(u){const gen=++generation;if(questionOff)questionOff();questionOff=null;questionAllowed=null;unsubs.forEach(f=>f());answerOff.forEach(f=>f());unsubs=[];answerOff=[];user=u;teacher=false;ready=false;pendingEntry=false;privateSettings=null;entryDenied=false;entryMetaVersion=0;ownPassVersion=0;entryFailures=0;entryBlockedUntil=0;model=copy(seed);model.publicReviews=[];publish();if(!u)return;
 try{const tok=await u.getIdTokenResult();if(gen!==generation)return;teacher=tok.claims.firebase?.sign_in_provider==='google.com'&&tok.claims.email_verified===true&&tok.claims.email===OWNER;if(!teacher&&!u.isAnonymous){fail('이 Google 계정에는 강사 권한이 없습니다. 익명 수강생으로 전환합니다.');await auth.signOut();return;}
+listen('entryMeta',v=>{entryMetaVersion=Number.isSafeInteger(v?.version)&&v.version>0?v.version:0;syncQuestions();ownAnswers();publish();});
+if(teacher)listen('entrySettings',v=>{privateSettings=v&&validCode(v.code)&&Number.isSafeInteger(v.version)?v:null;emit('teacherSettings',{});});
+else listen('entryPasses/'+u.uid,v=>{ownPassVersion=Number.isSafeInteger(v?.version)&&v.version>0?v.version:0;syncQuestions();ownAnswers();publish();});
 listen('shared',v=>{if(v){try{const normalized=normalizeContent(v);const oldIds=model.slides.filter(s=>s.kind==='quiz').map(s=>s.id).join();model.course=normalized.course;model.slides=normalized.slides;model.policies={...seed.policies,...normalized.policies};model.live={...seed.live,...normalized.live};model.updated=normalized.updated||0;if(oldIds!==model.slides.filter(s=>s.kind==='quiz').map(s=>s.id).join())ownAnswers();}catch(e){fail(e);}}syncQuestions();publish();});
 syncQuestions();
 listen('publicReviews',v=>{model.publicReviews=records(v);publish();});
 for(const node of ['reviews','enrollments'])listen(node+(teacher?'':'/'+u.uid),v=>{model[node]=teacher?records(v):v?[{...v,id:u.uid}]:[];if(node==='enrollments'){syncQuestions();ownAnswers();emit('profile',v);}publish();});
 if(teacher)listen('answers',v=>{model.answers=v||{};publish();});else ownAnswers();
-ready=true;publish();if(teacher){const s=await ref.child('shared').once('value');if(!s.exists())await ref.child('shared').transaction(old=>old||{course:seed.course,slides:seed.slides,policies:seed.policies,live:seed.live,updated:Date.now()});}
+if(teacher){const settings=await ref.child('entrySettings').once('value');if(!settings.exists())await initializeParticipationCode();const s=await ref.child('shared').once('value');if(!s.exists())await ref.child('shared').transaction(old=>old||{course:seed.course,slides:seed.slides,policies:seed.policies,live:seed.live,updated:Date.now()});}
+if(gen!==generation)return;ready=true;publish();
 if(!teacher&&!u.isAnonymous)fail('이 Google 계정에는 강사 권한이 없습니다. 수강생으로 이용하거나 승인된 계정으로 다시 로그인하세요.');
 }catch(e){fail(e);}}
 async function start(defaults){if(started)return;started=true;seed=copy(defaults);model=copy(seed);model.publicReviews=[];
@@ -65,12 +73,17 @@ for(const node of ['reviews','enrollments']){const map=Object.create(null),pub=O
 const answers=next.answers??{};if(!answers||typeof answers!=='object'||Array.isArray(answers))bad('답안');const amap=Object.create(null);for(const [slide,rows]of Object.entries(answers)){if(!validKey(slide,80)||!rows||typeof rows!=='object'||Array.isArray(rows))bad('답안 슬라이드');const vals=Object.create(null);for(const [id,a]of Object.entries(rows)){if(!validKey(id)||!Number.isInteger(a)||a<0||a>3)bad('답안 값');vals[id]=a;}if(Object.keys(vals).length)amap[slide]=vals;}if(Object.keys(amap).length)out.answers=amap;return out;}
 async function restore(next){assertReady();if(!teacher)throw Error('강사 권한이 필요합니다.');const updates=validateRestore(next);await ref.update(updates);}
 
-async function enterStudent(studentNo,name){assertReady();if(teacher||!user.isAnonymous)throw Error('학생 익명 연결에서만 입장할 수 있습니다.');if(pendingEntry)throw Error('입장 정보를 저장 중입니다.');
+function teacherSettings(){if(!teacher)return null;return privateSettings?copy(privateSettings):null;}
+async function setTeacherSlide(index,lock=true){assertReady();if(!teacher)throw Error('강사 권한이 필요합니다.');if(!Number.isInteger(index)||index<0||index>=model.slides.length)throw Error('슬라이드 범위를 확인해주세요.');await ref.update({'shared/live/slide':index,'shared/policies/locked':!!lock,'shared/updated':Date.now()});}
+async function initializeParticipationCode(){if(!connected||!user)throw Error('서버 연결을 확인해주세요.');if(!teacher)throw Error('강사 권한이 필요합니다.');const code=randomParticipationCode();try{await ref.update({entrySettings:{code,version:1,changedAt:Date.now()},entryMeta:{version:1}});}catch(e){const winner=await ref.child('entrySettings').once('value');if(!validCode(winner.val()?.code)||!Number.isSafeInteger(winner.val()?.version))throw e;}}
+async function setParticipationCode(code){assertReady();if(!teacher)throw Error('강사 권한이 필요합니다.');if(!validCode(code))throw Error('숫자 4자리 참여코드를 입력해주세요.');const prior=await ref.child('entrySettings').once('value');const version=Math.max(Date.now(),(prior.val()?.version||0)+1);await ref.update({entrySettings:{code,version,changedAt:Date.now()},entryMeta:{version}});}
+async function enterStudent(studentNo,name,code){assertReady();if(teacher||!user.isAnonymous)throw Error('학생 익명 연결에서만 입장할 수 있습니다.');if(pendingEntry)throw Error('입장 정보를 저장 중입니다.');
+if(Date.now()<entryBlockedUntil)throw Error('잠시 후 참여코드를 다시 확인해주세요.');
 if(typeof studentNo!=='string'||!/^[0-9]{2,12}$/.test(studentNo)||typeof name!=='string'||!name.trim()||name.trim().length>40)throw Error('학번은 숫자 2~12자리, 이름은 1~40자로 입력해주세요.');
 const id=user.uid,gen=generation,profile={person:id,studentNo,name:name.trim(),created:Date.now(),approved:false};pendingEntry=true;syncQuestions();ownAnswers();publish();
-let cleanup=()=>{};const confirmed=new Promise((resolve,reject)=>{const match=()=>{if(generation!==gen){cleanup();reject(Error('사용자가 변경되었습니다.'));return;}const p=model.enrollments.find(e=>e.person===id);if(p&&['person','studentNo','name','created','approved'].every(k=>p[k]===profile[k])){cleanup();resolve();}};const cb=()=>match();const timer=setTimeout(()=>{cleanup();reject(Error('입장 확인이 지연되고 있습니다. 연결 후 다시 시도해주세요.'));},15000);cleanup=()=>{clearTimeout(timer);events.removeEventListener('profile',cb);};events.addEventListener('profile',cb);match();});confirmed.catch(()=>{});
-try{await ref.update({['enrollments/'+id]:profile});await confirmed;if(generation!==gen)throw Error('사용자가 변경되었습니다.');pendingEntry=false;syncQuestions();ownAnswers();publish();return copy(profile);}finally{cleanup();if(generation===gen){pendingEntry=false;syncQuestions();ownAnswers();publish();}}}
+try{if(!validCode(code))throw Error('entry');const meta=await ref.child('entryMeta').once('value'),version=meta.val()?.version;if(!Number.isSafeInteger(version)||version<=0)throw Error('entry');await ref.child('entryPasses/'+id).set({code,version,created:Date.now()});code='';if(generation!==gen)throw Error('entry');await ref.child('enrollments/'+id).set(profile);if(generation!==gen||entryMetaVersion!==version)throw Error('entry');entryFailures=0;entryDenied=false;pendingEntry=false;syncQuestions();ownAnswers();publish();return copy(profile);
+}catch{entryDenied=true;entryFailures++;if(entryFailures>=5){entryBlockedUntil=Date.now()+30000;entryFailures=0;}throw Error('참여코드를 확인해주세요');}finally{code='';if(generation===gen){pendingEntry=false;syncQuestions();ownAnswers();publish();}}}
 async function leaveStudent(){if(teacher)throw Error('강사 로그아웃을 이용해주세요.');if(auth)await auth.signOut();}
 async function reset(all=false){assertReady();if(!teacher)throw Error('강사 권한이 필요합니다.');const w={questions:null,reviews:null,publicReviews:null,enrollments:null,answers:null,'shared/live':copy(seed.live),'shared/updated':Date.now()};if(all){w['shared/course']=copy(seed.course);w['shared/slides']=copy(seed.slides);w['shared/policies']=copy(seed.policies);}await ref.update(w);}
-window.ClassroomCloud={start,login,logout,leaveStudent,enterStudent,validProfile,commit,reset,restore,validateRestore,normalizeContent,status,on:(n,fn)=>events.addEventListener(n,e=>fn(e.detail)),snapshot:()=>copy(model||seed)};
+window.ClassroomCloud={setTeacherSlide,teacherSettings,setParticipationCode,randomParticipationCode,start,login,logout,leaveStudent,enterStudent,validProfile,commit,reset,restore,validateRestore,normalizeContent,status,on:(n,fn)=>events.addEventListener(n,e=>fn(e.detail)),snapshot:()=>copy(model||seed)};
 })();
