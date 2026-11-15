@@ -1,0 +1,165 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "classrooms": {
+      "webgame-v1": {
+        ".read": "auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com'",
+        ".write": "auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com'",
+        "shared": {
+          ".read": true,
+          "course": {
+            ".validate": true
+          },
+          "slides": {
+            ".validate": true
+          },
+          "policies": {
+            ".validate": "newData.hasChildren()",
+            "locked": {
+              ".validate": "newData.isBoolean()"
+            },
+            "pdf": {
+              ".validate": "newData.isBoolean()"
+            },
+            "materials": {
+              ".validate": "newData.isBoolean()"
+            },
+            "gate": {
+              ".validate": "newData.isBoolean()"
+            },
+            "questions": {
+              ".validate": "newData.isBoolean()"
+            },
+            "reviews": {
+              ".validate": "newData.isBoolean()"
+            },
+            "$other": {
+              ".validate": false
+            }
+          },
+          "live": {
+            ".validate": true
+          },
+          "updated": {
+            ".validate": "newData.isNumber()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        },
+        "questions": {
+          ".read": "auth != null && (root.child('classrooms/webgame-v1/shared/policies/gate').val() != true || root.child('classrooms/webgame-v1/enrollments').child(auth.uid).child('approved').val() == true)",
+          "$qid": {
+            ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && root.child('classrooms/webgame-v1/shared/policies/questions').val() == true && (root.child('classrooms/webgame-v1/shared/policies/gate').val() != true || root.child('classrooms/webgame-v1/enrollments').child(auth.uid).child('approved').val() == true) && !data.exists() && newData.child('person').val() == auth.uid && newData.child('done').val() == false",
+            ".validate": "newData.hasChildren(['person','text','created','done']) && ((auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com') || !data.exists() || (newData.child('person').val() == data.child('person').val() && newData.child('text').val() == data.child('text').val() && newData.child('created').val() == data.child('created').val() && newData.child('done').val() == data.child('done').val()))",
+            "person": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 128"
+            },
+            "text": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 600"
+            },
+            "created": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "done": {
+              ".validate": "newData.isBoolean()"
+            },
+            "votes": {
+              ".validate": "newData.hasChildren()",
+              "$uid": {
+                ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && auth.uid == $uid && root.child('classrooms/webgame-v1/shared/policies/questions').val() == true && (root.child('classrooms/webgame-v1/shared/policies/gate').val() != true || root.child('classrooms/webgame-v1/enrollments').child(auth.uid).child('approved').val() == true) && data.parent().parent().exists() && newData.val() == true",
+                ".validate": "newData.isBoolean() && newData.val() == true && ((auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com') || (auth != null && auth.uid == $uid))"
+              }
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "reviews": {
+          "$uid": {
+            ".read": "auth != null && auth.uid == $uid",
+            ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && auth.uid == $uid && root.child('classrooms/webgame-v1/shared/policies/reviews').val() == true && (root.child('classrooms/webgame-v1/shared/policies/gate').val() != true || root.child('classrooms/webgame-v1/enrollments').child(auth.uid).child('approved').val() == true) && (!newData.exists() || (newData.child('person').val() == auth.uid && newData.child('approved').val() == false))",
+            ".validate": "newData.hasChildren(['person','text','rating','created','approved']) && newData.child('person').val() == $uid",
+            "person": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 128"
+            },
+            "text": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 500"
+            },
+            "rating": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5 && newData.val() % 1 == 0"
+            },
+            "created": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "approved": {
+              ".validate": "newData.isBoolean() && ((auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com') || newData.val() == false)"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "publicReviews": {
+          ".read": true,
+          "$uid": {
+            ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && auth.uid == $uid && !newData.exists()",
+            ".validate": "newData.hasChildren(['text','rating','created','approved'])",
+            "text": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 500"
+            },
+            "rating": {
+              ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5 && newData.val() % 1 == 0"
+            },
+            "created": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "approved": {
+              ".validate": "newData.isBoolean() && newData.val() == true"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "enrollments": {
+          "$uid": {
+            ".read": "auth != null && auth.uid == $uid",
+            ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && auth.uid == $uid && (!newData.exists() || (newData.child('person').val() == auth.uid && newData.child('approved').val() == false))",
+            ".validate": "newData.hasChildren(['person','name','created','approved']) && newData.child('person').val() == $uid",
+            "person": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 128"
+            },
+            "name": {
+              ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 80"
+            },
+            "created": {
+              ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= now + 60000"
+            },
+            "approved": {
+              ".validate": "newData.isBoolean() && ((auth != null && auth.token.firebase.sign_in_provider == 'google.com' && auth.token.email_verified == true && auth.token.email == 'jminjoo3@gmail.com') || newData.val() == false)"
+            },
+            "$other": {
+              ".validate": false
+            }
+          }
+        },
+        "answers": {
+          "$slideId": {
+            ".validate": "$slideId.length >= 1 && $slideId.length <= 80 && newData.hasChildren()",
+            "$uid": {
+              ".read": "auth != null && auth.uid == $uid",
+              ".write": "auth != null && auth.token.firebase.sign_in_provider == 'anonymous' && auth.uid == $uid && (root.child('classrooms/webgame-v1/shared/policies/gate').val() != true || root.child('classrooms/webgame-v1/enrollments').child(auth.uid).child('approved').val() == true) && newData.exists() && $slideId.length >= 1 && $slideId.length <= 80",
+              ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 3 && newData.val() % 1 == 0"
+            }
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e8b62c">
+<meta name="description" content="바이브코딩으로 완성하는 나만의 첫 웹게임. 45분씩 3차시 실습 수업.">
+<meta property="og:title" content="웹게임교실 · WEB GAME CLASS">
+<meta property="og:description" content="강의 소개 · 웹슬라이드 · 질문과 퀴즈 · 관리자">
+<title>웹게임교실 · WEB GAME CLASS</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e8b62c'/%3E%3Cpath d='M16 17h32v24H16zM26 49h12M32 41v8' fill='none' stroke='%23191a18' stroke-width='4'/%3E%3C/svg%3E">
+<style>@charset "UTF-8";
+:root{--paper:#f2f1ec;--ink:#191a18;--mustard:#e8b62c;--muted:#777972;--line:#dedfd6;--white:#fff;--radius:20px;--shadow:0 4px 0 #191a1808,0 12px 30px #191a1805;--font:Pretendard,"Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;color-scheme:light;font-family:var(--font);color:var(--ink);background:var(--paper);font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}body{margin:0;min-width:320px;line-height:1.65;letter-spacing:-.025em;overflow-x:hidden}button,input,textarea,select{font:inherit}button,a,input,textarea,select{-webkit-tap-highlight-color:transparent}button{cursor:pointer;color:inherit}button:disabled{cursor:not-allowed;opacity:.42}a{color:inherit;text-underline-offset:4px}button,a,input,textarea,select{outline-offset:4px} :focus-visible{outline:3px solid #936800!important}button{transition:background .18s,transform .18s,border-color .18s,box-shadow .18s}button:not(:disabled):active{transform:translateY(1px)}h1,h2,h3,h4,p{margin:0}h1,h2,h3,h4{line-height:1.3;word-break:keep-all;overflow-wrap:anywhere}h1{font-size:clamp(30px,3.5vw,48px);font-weight:800;letter-spacing:-.065em}h2{font-size:25px;letter-spacing:-.045em}h3{font-size:19px;letter-spacing:-.035em}p{word-break:keep-all;overflow-wrap:anywhere}ul,ol{padding-left:1.4em}img,svg{max-width:100%}svg{vertical-align:middle}[hidden]{display:none!important}
+.app-header{max-width:1440px;margin:auto;min-height:100px;padding:22px 48px;display:flex;align-items:center;gap:38px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}.brand-mark{width:43px;height:43px;background:var(--ink);color:var(--mustard);border-radius:13px;display:grid;place-items:center;font-size:22px;font-weight:850;transform:rotate(-5deg)}.brand strong{font-size:19px;display:block;line-height:1.2;letter-spacing:-.065em}.brand small{display:block;font-size:10px;letter-spacing:.12em;margin-top:5px;color:var(--muted);font-weight:650}.main-nav{display:flex;gap:6px;align-items:center;flex:1}.main-nav button{background:none;border:0;border-radius:10px;padding:11px 17px;font-size:14px;font-weight:650;color:#73766e;white-space:nowrap}.main-nav button:hover{background:#e8e8e0;color:var(--ink)}.main-nav button.active{background:var(--ink);color:#fff}.header-meta{display:flex;align-items:center;gap:8px;color:#76796f;font-size:12px;white-space:nowrap}.status-dot{width:7px;height:7px;border-radius:50%;background:#56886c;box-shadow:0 0 0 4px #56886c12;display:inline-block}.shell{max-width:1280px;margin:0 auto;padding:42px 40px 65px;min-height:calc(100vh - 184px)}.page-heading{margin-bottom:30px}.eyebrow,.section-label{font-size:11px;letter-spacing:.13em;font-weight:800;text-transform:uppercase;color:#73766d;margin-bottom:13px}.page-heading .lead{margin-top:15px;color:#74776d;font-size:15px;line-height:1.8}.hero-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;align-items:stretch;margin-bottom:42px}.hero-panel{position:relative;background:var(--mustard);border:1px solid #d9a922;border-radius:var(--radius);padding:40px;min-height:354px;display:flex;flex-direction:column;overflow:hidden}.hero-panel .eyebrow{color:#6d5515}.hero-panel h1{font-size:clamp(32px,3.5vw,48px);max-width:650px;line-height:1.22}.hero-description{max-width:460px;font-size:15px;line-height:1.8;margin-top:20px;color:#5a491e}.tag-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}.hero-panel .chip{border-color:#ac831940;background:#ffffff26;color:#4c3e1c}.hero-footer{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-top:auto;padding-top:26px;font-size:12px;color:#68511a}.today-card,.panel,.module-card,.resource-card,.review-card,.stat-card,.admin-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.today-card{padding:29px;display:flex;flex-direction:column}.card-label{color:#85877e;font-size:11px;letter-spacing:.12em;font-weight:800}.today-title{margin-top:14px;font-size:24px;line-height:1.4;font-weight:800;letter-spacing:-.05em}.session-list{list-style:none;padding:0;margin:25px 0 0}.session-list li{display:flex;align-items:center;gap:12px;padding:15px 0;border-bottom:1px solid #eeeee8;font-size:13px}.session-list li:last-child{border-bottom:0}.session-dot{height:7px;width:7px;flex-shrink:0;background:var(--mustard);border-radius:50%}.session-time{margin-left:auto;white-space:nowrap;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums}.btn{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px 19px;font-size:13px;line-height:1.5;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;min-height:43px;white-space:nowrap}.btn:hover{background:#eceee7;border-color:#bfc1b7}.btn.primary{background:var(--mustard);border-color:#dba91f}.btn.primary:hover{background:#f0c243}.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.btn.dark:hover{background:#363a31}.btn.ghost{background:transparent}.btn.small{padding:7px 12px;font-size:12px;min-height:34px;border-radius:8px}.btn.danger{color:#a13e32;background:#fff8f6;border-color:#ead5d0}.button-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.chip,.pill,.badge{display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;font-size:10px;font-weight:750;line-height:1.5;white-space:nowrap}.pill{border-radius:20px;background:#f1f2ed}.local-banner,.notice{padding:14px 18px;border:1px solid #dedccf;border-radius:11px;background:#eae9e0;font-size:12px;color:#686b61;margin-bottom:22px}.notice{background:#faf7e9;border-color:#e7dfbc}.muted{color:var(--muted);font-size:13px}.empty{text-align:center;padding:44px 20px;color:var(--muted);font-size:14px;border:1px dashed #d5d7cc;border-radius:12px}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:32px 0 18px}.section-heading h2{font-size:22px}.section-heading .section-label{margin:0 0 5px}.count{color:#8b8e82;font-size:12px;font-weight:500;margin-left:9px}.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin:25px 0}.stat-card{padding:21px 23px;border-radius:14px}.stat-card strong{display:block;font-size:29px;line-height:1.2;letter-spacing:-.055em}.stat-card small{display:block;margin-top:9px;color:var(--muted);font-size:12px}.curriculum-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.module-card{padding:25px;position:relative;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s}.module-card:hover{transform:translateY(-3px);box-shadow:0 9px 25px #191a180d}.module-number{font-size:11px;font-weight:850;color:#8b8e82;letter-spacing:.08em}.module-card h3{font-size:20px}.module-card p{color:var(--muted);font-size:13px;line-height:1.8}.module-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:17px;border-top:1px solid #edeee7;font-size:11px;color:var(--muted)}.resource-grid,.portal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.resource-card{padding:25px;display:flex;flex-direction:column;gap:14px}.resource-card p{color:var(--muted);font-size:13px}.resource-card .btn{align-self:flex-start;margin-top:auto}.panel{padding:28px}.panel-title{font-size:20px;font-weight:750;margin-bottom:20px}.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.review-card{padding:24px;font-size:13px}.review-card p{margin:14px 0;color:#5f6359}.stars{color:#b98a0e;letter-spacing:.1em;font-size:16px}.field{display:flex;flex-direction:column;gap:8px;min-width:0}.field label{font-size:12px;font-weight:750}.field input,.field textarea,.field select,input:not([type=checkbox]):not([type=radio]):not([type=range]),textarea,select{max-width:100%;width:100%;border:1px solid #d9dbd1;border-radius:9px;background:#fdfdfb;color:var(--ink);padding:11px 13px;line-height:1.5;font-size:13px}.field textarea,textarea{min-height:120px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:#9e812d}.field small{font-size:11px;color:var(--muted)}input[type=checkbox],input[type=radio]{accent-color:#8d711d;width:16px;height:16px;flex-shrink:0}.form-grid,.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.check-row,.switch-row{display:flex;align-items:center;gap:10px;font-size:13px}.switch-row{justify-content:space-between;padding:15px 0;border-bottom:1px solid #edeee7}.toggle{appearance:none;width:38px!important;height:22px!important;border-radius:20px;background:#c9cdc1;border:0;position:relative;cursor:pointer;flex-shrink:0}.toggle::before{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;background:#fff;border-radius:50%;box-shadow:0 1px 3px #0002;transition:transform .18s}.toggle:checked,.toggle[aria-checked=true]{background:#d3a324}.toggle:checked::before,.toggle[aria-checked=true]::before{transform:translateX(16px)}.stack{display:flex;flex-direction:column;gap:18px}.split{display:flex;justify-content:space-between;align-items:center;gap:16px}.list-item{display:flex;align-items:center;gap:15px;padding:17px 0;border-bottom:1px solid #e9ebe2}.list-item:last-child{border-bottom:0}.list-content{flex:1;min-width:0;font-size:13px}.list-content strong{display:block;font-size:14px}.list-content small{display:block;color:var(--muted);margin-top:3px}.list-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.slides-workspace{background:#e6e7df;border:1px solid #d8dbce;border-radius:18px;padding:20px;min-width:0}.slide-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap}.slide-meta{font-size:12px;color:#6d7265;display:flex;gap:12px;align-items:center}.slide-stage{position:relative;width:100%;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;background:#fbfbf6;border-radius:11px;box-shadow:0 7px 24px #24281912}.slide-page{position:relative;width:100%;height:100%;padding:5cqi 5.8cqi 6cqi;display:flex;flex-direction:column;background:#fafaf6;overflow:hidden;line-height:1.5}.slide-page.cover{background:var(--mustard);justify-content:center}.slide-kicker{font-size:1.08cqi;letter-spacing:.16em;font-weight:800;color:#74796b;margin-bottom:1.5cqi}.cover .slide-kicker{color:#715819}.slide-title{font-size:4.4cqi;line-height:1.24;letter-spacing:-.065em;font-weight:850;max-width:100%;word-break:keep-all}.cover .slide-title{font-size:6.1cqi;max-width:85%;line-height:1.15}.slide-subtitle{font-size:1.65cqi;line-height:1.7;color:#73786b;margin-top:1.6cqi}.cover .slide-subtitle{color:#6b531b;font-size:1.9cqi;max-width:80%}.slide-content{font-size:1.85cqi;margin-top:2.8cqi;line-height:1.65;min-height:0}.slide-content p+p{margin-top:1.3cqi}.slide-content ul,.slide-content ol{margin:1.1cqi 0;padding-left:1.5em}.slide-content li+li{margin-top:.8cqi}.slide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5cqi;margin-top:2.5cqi;min-height:0}.slide-grid:has(> :nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}.slide-box{background:#efefe7;border:1px solid #e1e3d8;border-radius:1.1cqi;padding:2cqi;font-size:1.65cqi;line-height:1.6;min-width:0}.slide-box h3{font-size:2.1cqi;line-height:1.35;margin-bottom:1cqi}.slide-box p{font-size:inherit}.slide-box-number{font-size:1.1cqi;letter-spacing:.06em;font-weight:800;color:#8c731d;margin-bottom:1.3cqi;display:block}.slide-footer{position:absolute;bottom:2.4cqi;left:5.8cqi;right:5.8cqi;display:flex;align-items:center;justify-content:space-between;font-size:.95cqi;font-weight:650;color:#858a7c;letter-spacing:.06em;border-top:1px solid #191a1815;padding-top:1cqi}.cover .slide-footer{color:#755b19}.slide-count{font-variant-numeric:tabular-nums}.slide-controls{display:flex;align-items:center;gap:18px;margin-top:17px}.progress-track{height:4px;border-radius:5px;background:#cfd2c6;flex:1;overflow:hidden}.progress-fill{height:100%;background:var(--ink);border-radius:5px;transition:width .25s}.slide-nav{display:flex;align-items:center;gap:9px;font-size:12px;white-space:nowrap}.slide-outline{display:flex;gap:6px;overflow-x:auto;padding:15px 1px 2px;scrollbar-width:thin}.outline-btn{border:1px solid #d0d4c6;border-radius:8px;background:#eeefe8;padding:7px 11px;white-space:nowrap;font-size:11px}.outline-btn.active{background:var(--ink);color:#fff;border-color:var(--ink)}.viewer-layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:22px;align-items:start}.viewer-sidebar{min-width:0;background:white;border:1px solid var(--line);padding:22px;border-radius:15px;font-size:13px}.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2cqi;margin-top:2.3cqi}.quiz-option{padding:1.6cqi 2cqi;border:1px solid #d9ddcf;background:#fff;border-radius:1cqi;text-align:left;font-size:1.75cqi;line-height:1.5;min-width:0}.quiz-option.selected{border-color:#a78016;background:#fff5d6;box-shadow:0 0 0 1px #a78016}.quiz-option.correct{border-color:#649377;background:#e7f2e6}.timer-display{font-size:6cqi;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2;letter-spacing:-.05em;margin:2cqi 0}.prompt-code{white-space:pre-wrap;overflow-wrap:anywhere;background:#24291f;color:#eff2e6;border-radius:1cqi;padding:2cqi;font-family:var(--font);font-size:1.5cqi;line-height:1.75;margin:2cqi 0 0}.prompt-page .slide-content{margin-top:1.8cqi}
+.admin-layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:30px;align-items:start}.admin-sidebar{position:sticky;top:22px;background:#e7e8df;border:1px solid #dbded1;padding:18px 12px;border-radius:15px}.admin-sidebar .section-label{padding:0 13px;margin-bottom:15px}.admin-nav{display:flex;flex-direction:column;gap:5px}.admin-nav button,.admin-nav a{display:flex;align-items:center;gap:10px;width:100%;padding:12px 14px;border:0;border-radius:9px;background:transparent;color:#74796c;font-size:13px;font-weight:650;text-align:left;text-decoration:none;white-space:nowrap}.admin-nav .active{background:#fff;color:var(--ink);box-shadow:0 2px 5px #00000006}.admin-nav button:hover{background:#ffffff70}.admin-main{min-width:0}.admin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.admin-card{padding:25px;min-width:0;border-radius:15px}.admin-card.wide{grid-column:1/-1}.admin-card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:21px}.admin-card-head h2,.admin-card-head h3{font-size:17px}.admin-kpi{font-size:33px;font-weight:800;line-height:1.2;letter-spacing:-.05em}.admin-kpi small{font-size:13px;color:var(--muted);font-weight:500;margin-left:7px}.admin-slide-title{font-size:13px;font-weight:650;min-width:0}.slide-jump{border:1px solid var(--line);background:#f7f8f2;border-radius:6px;font-size:11px;padding:5px 9px}.policy-list{font-size:12px;color:#6f7466;line-height:1.9;padding-left:18px}.policy-list li+li{margin-top:8px}.queue-item{padding:15px 0;border-bottom:1px solid #e9ece1;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:12px}.badge.pending{color:#946c0e;border-color:#e9dab1;background:#fbf4df}.badge.approved{color:#54785b;border-color:#d2e1cf;background:#edf4ea}.settings-grid{gap:25px}.tab-bar{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:28px;overflow-x:auto;scrollbar-width:thin}.tab-bar button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);padding:13px 20px;font-size:13px;font-weight:700;white-space:nowrap;border-radius:6px 6px 0 0}.tab-bar button.active,.tab-bar button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink);background:#e9eae2}.modal-backdrop{position:fixed;inset:0;z-index:100;background:#181b1566;backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:25px}.modal{width:min(780px,100%);max-height:88dvh;overflow:auto;border:1px solid #d8dacf;border-radius:20px;background:var(--paper);box-shadow:0 25px 90px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 27px;border-bottom:1px solid var(--line)}.modal-head h2{font-size:21px}.modal-body{padding:26px}.modal-footer{display:flex;justify-content:flex-end;gap:9px;padding:18px 26px;border-top:1px solid var(--line)}.grid-thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.thumb-btn{text-align:left;padding:15px;background:#fff;border:1px solid var(--line);border-radius:10px;min-height:100px}.thumb-btn:hover,.thumb-btn.active{border-color:#b1902e;background:#fff7df}.thumb-number{display:block;font-size:10px;letter-spacing:.1em;color:#979b8c;margin-bottom:10px}.thumb-title{display:block;font-size:12px;font-weight:700;line-height:1.5}.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:150;max-width:calc(100vw - 32px);padding:13px 22px;background:#24291f;color:#fff;border-radius:11px;box-shadow:0 8px 24px #0002;font-size:13px;text-align:center}.app-footer{border-top:1px solid var(--line);max-width:1280px;margin:0 auto;padding:25px 40px 30px;display:flex;justify-content:space-between;gap:16px;font-size:10px;color:#929689;letter-spacing:.025em}#print-root{display:none}
+@media(min-width:1440px){.shell{padding-top:48px}.hero-panel{min-height:375px}}
+@media(max-width:1100px){.app-header{padding:20px 28px;gap:22px}.main-nav{gap:1px}.main-nav button{padding:10px 12px}.header-meta{display:none}.shell{padding:32px 28px 50px}.hero-panel{padding:30px}.today-card{padding:25px}.viewer-layout{grid-template-columns:minmax(0,1fr)}.viewer-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.admin-layout{grid-template-columns:190px minmax(0,1fr);gap:20px}.admin-card{padding:20px}.app-footer{padding-left:28px;padding-right:28px}}
+@media(max-width:800px){.app-header{flex-wrap:wrap;gap:17px;padding:20px 22px 13px}.brand{flex:1}.main-nav{order:3;flex-basis:100%;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.main-nav::-webkit-scrollbar{display:none}.main-nav button{padding:10px 15px}.header-meta{display:flex;font-size:11px}.hero-grid{grid-template-columns:1fr;gap:18px}.hero-panel{min-height:335px}.today-title{font-size:21px}.session-list{margin-top:13px}.curriculum-grid,.resource-grid,.portal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.review-grid{grid-template-columns:1fr}.review-card{padding:22px}.stat-grid{gap:10px}.stat-card{padding:18px}.stat-card strong{font-size:25px}.admin-layout{grid-template-columns:1fr;gap:22px}.admin-sidebar{position:static;padding:8px;overflow:hidden}.admin-sidebar .section-label{display:none}.admin-nav{flex-direction:row;overflow-x:auto;scrollbar-width:thin}.admin-nav button,.admin-nav a{width:auto;padding:10px 15px}.slide-toolbar .button-row{gap:5px}.slide-toolbar .btn{font-size:11px;padding:7px 10px;min-height:33px}}
+@media(max-width:540px){body{font-size:14px}.app-header{padding:19px 20px 10px;gap:16px}.brand-mark{width:36px;height:36px;font-size:19px;border-radius:10px}.brand strong{font-size:17px}.brand small{font-size:8px}.header-meta{font-size:10px}.main-nav{margin-right:-20px;padding-right:20px;gap:2px}.main-nav button{font-size:12px;padding:9px 13px;border-radius:8px}.shell{padding:27px 20px 42px}.page-heading{margin-bottom:23px}.page-heading h1{font-size:30px}.page-heading .lead{font-size:13px;margin-top:12px}.eyebrow{font-size:10px;margin-bottom:11px}.hero-grid{margin-bottom:30px}.hero-panel{padding:28px 25px;min-height:345px;border-radius:17px}.hero-panel h1{font-size:34px;letter-spacing:-.06em}.hero-description{font-size:13px;margin-top:17px}.tag-row{margin-top:18px;gap:5px}.chip{font-size:9px;padding:4px 7px}.hero-footer{padding-top:22px;gap:14px}.today-card{padding:24px;border-radius:16px}.today-title{font-size:22px}.session-list li{font-size:12px;padding:13px 0}.session-time{font-size:11px}.section-heading{margin:27px 0 16px}.section-heading h2{font-size:20px}.section-heading .btn{font-size:11px;padding:7px 10px;min-height:34px}.curriculum-grid,.resource-grid,.portal-grid{grid-template-columns:1fr;gap:14px}.module-card,.resource-card{padding:23px;border-radius:16px}.module-card h3{font-size:20px}.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin:20px 0}.stat-card{padding:18px 20px}.stat-card strong{font-size:27px}.stat-card small{font-size:11px}.panel{padding:22px;border-radius:16px}.form-grid,.settings-grid{grid-template-columns:1fr;gap:17px}.field input,.field textarea,.field select,input:not([type=checkbox]):not([type=radio]):not([type=range]),textarea,select{font-size:16px}.list-item{gap:10px;flex-wrap:wrap}.list-content{flex-basis:60%}.list-actions{margin-left:auto}.split{align-items:flex-start;flex-wrap:wrap}.admin-grid{grid-template-columns:1fr;gap:15px}.admin-card{padding:21px}.admin-card.wide{grid-column:auto}.admin-card-head{margin-bottom:17px}.admin-nav button{font-size:12px}.tab-bar{margin-bottom:22px}.tab-bar button{font-size:12px;padding:11px 15px}.slides-workspace{padding:10px;border-radius:12px;margin-left:-10px;margin-right:-10px}.slide-toolbar{margin-bottom:10px;gap:9px}.slide-meta{font-size:10px;gap:7px}.slide-toolbar .button-row{gap:4px}.slide-toolbar .btn{padding:6px 8px;min-height:29px;font-size:10px;border-radius:6px}.slide-stage{border-radius:6px}.slide-page{padding:4.2cqi 5cqi 6cqi}.slide-title{font-size:4.7cqi}.slide-kicker{font-size:1.65cqi;margin-bottom:1.2cqi}.slide-subtitle{font-size:2.15cqi}.slide-content{font-size:2.15cqi;margin-top:2cqi}.slide-box{font-size:1.9cqi;padding:1.5cqi}.slide-box h3{font-size:2.35cqi}.slide-box-number{font-size:1.6cqi;margin-bottom:.8cqi}.slide-footer{font-size:1.5cqi;left:5cqi;right:5cqi;bottom:1.8cqi;padding-top:.7cqi}.cover .slide-title{font-size:6.6cqi;max-width:92%}.cover .slide-subtitle{font-size:2.4cqi}.quiz-option{font-size:2.1cqi;padding:1.4cqi 1.7cqi}.prompt-code{font-size:1.95cqi;padding:1.7cqi;line-height:1.55}.slide-controls{gap:10px;margin-top:12px}.slide-nav{gap:6px;font-size:10px}.slide-nav .btn{padding:7px 9px;font-size:10px;min-height:30px}.outline-btn{font-size:10px;padding:6px 9px}.viewer-sidebar{display:block;padding:20px}.viewer-sidebar>*+*{margin-top:14px}.modal-backdrop{padding:14px}.modal{border-radius:15px;max-height:90dvh}.modal-head,.modal-body{padding:20px}.modal-head h2{font-size:19px}.modal-footer{padding:15px 20px}.grid-thumbs{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.thumb-btn{padding:12px;min-height:92px}.app-footer{padding:23px 20px;flex-direction:column;gap:5px;font-size:9px}.local-banner,.notice{padding:12px 14px;font-size:11px}.toast{bottom:18px;font-size:12px;padding:12px 18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{@page{size:A4 landscape;margin:0}html,body{margin:0!important;padding:0!important;width:100%!important;background:#fff!important;overflow:visible!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body>*:not(#print-root){display:none!important}.app-header,.shell,.app-footer,.modal-backdrop,.toast,.slide-toolbar,.slide-controls,.slide-outline{display:none!important}#print-root{display:block!important;width:100%}.print-slide{display:block!important;width:297mm;height:167.0625mm;aspect-ratio:16/9;position:relative;container-type:inline-size;break-after:page;page-break-after:always;break-inside:avoid;overflow:visible!important;background:#fafaf6}.print-slide:last-child{break-after:auto;page-break-after:auto}.print-slide .slide-page{width:100%;height:100%;min-height:100%;overflow:visible!important;container-type:normal}.print-slide .slide-content,.print-slide .slide-box,.print-slide .prompt-code{overflow:visible!important;max-height:none!important}.print-slide button{color:var(--ink);opacity:1}.print-slide .slide-kicker{font-size:11pt}.print-slide .slide-title{font-size:32pt}.print-slide .cover .slide-title{font-size:48pt}.print-slide .slide-subtitle{font-size:15pt}.print-slide .slide-content{font-size:16pt}.print-slide .slide-box{font-size:14pt}.print-slide .slide-box h3{font-size:18pt}.print-slide .slide-box-number{font-size:10pt}.print-slide .slide-footer{font-size:9pt}.print-slide .prompt-code{font-size:13pt}.print-slide .quiz-option{font-size:15pt}.print-slide .timer-display{font-size:48pt}}
+
+/* Application layout refinements */
+.skip-link{position:fixed;top:-80px;left:20px;z-index:200;background:#191a18;color:white;padding:10px 20px;border-radius:8px}.skip-link:focus{top:12px}.page-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.hero-panel>.tag-row{margin:0 0 30px;align-items:center}.hero-panel .tag-row .eyebrow{margin:0;font-size:9px}.hero-panel>.button-row{margin:25px 0 20px}.hero-panel>p:not(.hero-description){font-size:13px;max-width:470px;color:#604b1a;margin-top:13px}.hero-panel .pill{background:transparent;border-color:#191a1833;font-size:10px}.hero-description{font-weight:650;font-size:19px}.hero-footer>span{display:inline-flex;align-items:center;gap:6px}.card-label{display:flex;justify-content:space-between;align-items:center;gap:5px}.session-dot{width:24px;height:24px;display:grid;place-items:center;font-size:10px;font-weight:800;border-radius:7px;background:#f3e5b5}.session-list strong{display:block;font-size:13px}.session-list small{display:block;color:#85887f;font-size:10px;line-height:1.6;margin-top:3px}.today-card>.muted{margin-top:auto;padding-top:15px;font-size:11px}.local-banner,.notice{display:flex;align-items:flex-start;gap:10px}.local-banner>svg,.notice>svg{flex-shrink:0;margin-top:2px}.stat-card>span{display:block;font-size:11px;color:#7a7d73;margin-top:12px}.stat-card strong small{display:inline;font-size:13px;margin-left:4px;color:inherit}.curriculum-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.module-card{text-align:left}.portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:30px}.portal-grid>.panel>h2{margin-bottom:17px}.portal-grid .review-grid{grid-template-columns:1fr}.panel .button-row{margin-top:25px}.resource-grid{margin:24px 0 30px}.resource-card h2{font-size:20px}.glossary{margin-top:30px}.glossary .curriculum-grid{margin-top:25px;grid-template-columns:repeat(3,minmax(0,1fr))}.glossary h3{font-size:16px;margin-bottom:10px}.prompt-details{border:1px solid #e4e5dd;border-radius:10px;padding:18px}.prompt-details summary{cursor:pointer;font-weight:700}.prompt-details pre{white-space:pre-wrap;font:13px/1.8 var(--font);background:#f4f4ef;padding:20px;border-radius:8px;overflow-wrap:anywhere}.text-button{border:0;padding:0;background:none;text-decoration:underline;color:inherit;font-weight:700}.slides-workspace{margin:35px auto;border:0;background:transparent;border-radius:0;max-width:1280px;padding:0 40px 35px}.slides-workspace .page-heading h1{font-size:27px}.slide-stage{box-shadow:0 12px 40px #191a1812;border:1px solid #deded5}.slide-kicker{display:flex;justify-content:space-between;align-items:center;gap:12px}.slide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.slide-box{background:#fff;box-shadow:0 .5cqi 1.8cqi #191a1807}.cover .slide-content{margin-top:4cqi}.cover .slide-grid{max-width:85%;gap:1.1cqi}.cover .slide-box{background:#ffffff30;border-color:#191a1820;padding:1.3cqi}.cover .slide-box h3{font-size:1.8cqi}.cover .slide-box p{font-size:1.3cqi}.cover .slide-box-number{display:none}.slide-nav{flex:1;display:grid;grid-template-columns:auto 1fr;gap:6px 18px}.slide-nav>small{grid-column:1/-1;text-align:center;font-size:10px;color:#898c83}.slide-nav .progress-track{width:100%;height:4px}.slide-controls>.btn{min-width:100px}.slide-toolbar kbd{font:10px/1.2 monospace;border:1px solid #c9cbc1;padding:2px;border-radius:3px;color:#777}.quiz-option{display:flex;align-items:center;gap:1.2cqi}.quiz-option>span{width:2.7cqi;height:2.7cqi;display:grid;place-items:center;background:#f0f0e9;border-radius:.6cqi;flex-shrink:0;font-weight:750}.quiz-feedback{font-size:1.3cqi;margin-top:1.4cqi}.prompt-page .slide-content>.btn{margin-top:1.1cqi;font-size:1.2cqi;padding:.7cqi 1.2cqi;min-height:0}.practice-timer{display:flex;align-items:center;gap:2cqi;margin-top:2cqi;font-size:1.5cqi}.practice-timer .timer-display{font-size:3.8cqi;margin:0}.practice-timer .btn{font-size:1.2cqi;padding:.8cqi 1.3cqi;min-height:0}.gate-panel{padding:80px 30px;text-align:center}.gate-panel>p{margin:15px 0}.admin-kpi{display:flex;align-items:center;gap:12px;margin:20px 0 25px}.admin-kpi>strong{font-size:65px}.admin-kpi>span{font-size:20px;color:#a3a69c}.admin-kpi>div{margin-left:12px}.admin-kpi h3{font-size:17px;line-height:1.4;margin-top:7px}.admin-kpi small{margin:0;font-size:11px}.policy-list{padding:0;margin-top:20px}.switch-row small{display:block;line-height:1.6;font-size:10px;margin-top:5px;color:#8b8f81;max-width:290px}.switch-row strong{font-size:12px;color:#34382f}.slide-jump{display:flex;align-items:center;gap:10px;padding:0;background:none;border:0}.slide-jump select{width:200px;font-size:11px;padding:8px}.admin-card>.timer-display{font-size:55px;margin:22px 0 26px}.admin-card .button-row>select{width:75px;padding:7px;font-size:12px}.admin-card>h2{margin-bottom:18px;font-size:20px}.admin-sidebar-bottom{font-size:10px;color:#7d8273;margin:35px 12px 5px;display:flex;align-items:center;gap:10px}.admin-main>.stack>.admin-card>p{margin-bottom:20px}.admin-main>.stack>.admin-card>.settings-grid{margin:25px 0}.settings-grid .panel{padding:22px}.settings-grid h3{font-size:16px}.settings-grid p{margin:12px 0 22px}.safe-list{padding-left:20px;font-size:13px;color:#73786b;line-height:2.2}.badge{margin:0 7px 0 0}.list-item{justify-content:space-between}.queue-item p{margin:10px 0}.queue-item .list-actions{flex-wrap:wrap;justify-content:flex-end;max-width:100px}.review-card small{color:#93978b;font-size:10px}.quiz-result-row{display:grid;grid-template-columns:minmax(0,1fr) 140px 22px;gap:20px;align-items:center;padding:12px 0;font-size:13px;border-bottom:1px solid #eeefe7}.quiz-result-row:last-of-type{margin-bottom:25px}.panel>.stat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.admin-card .stat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.panel-title{display:flex;align-items:center;justify-content:space-between}.panel-title h2{font-size:21px}.remote-update-note{position:fixed;bottom:18px;right:18px;z-index:90;max-width:calc(100vw - 36px);white-space:normal}.timer-ended{color:#a13e32}.slide-stage:fullscreen{border-radius:0;width:100vw;height:100vh;background:#111;display:grid;place-items:center;container-type:inline-size}.slide-stage:fullscreen>.slide-page{width:min(100vw,177.777vh);height:min(100vh,56.25vw);aspect-ratio:16/9}
+@media(max-width:1100px){.curriculum-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.main-nav button{padding:10px}.hero-panel h1{font-size:39px}.today-card{padding:24px}.card-label{font-size:9px}}
+@media(max-width:800px){.page-heading{align-items:flex-start;flex-wrap:wrap}.page-heading>.btn{margin-top:2px}.admin-sidebar-bottom{display:none}.slides-workspace{padding-left:22px;padding-right:22px}.slide-meta{flex-wrap:wrap}.slide-controls>.btn{min-width:75px;padding:10px 12px}.glossary .curriculum-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.local-banner{font-size:11px}.hero-panel .tag-row .eyebrow{font-size:8px}.quiz-result-row{grid-template-columns:1fr 70px 18px;gap:10px}}
+@media(max-width:540px){.hero-panel h1{font-size:35px}.hero-description{font-size:17px}.hero-panel>.button-row{gap:6px}.hero-panel .btn{font-size:11px;padding:11px 13px}.hero-panel>.tag-row{margin-bottom:24px}.curriculum-grid,.portal-grid{grid-template-columns:1fr}.hero-footer{font-size:10px}.portal-grid{margin-top:24px}.slides-workspace{margin:25px auto;padding:0 12px 25px}.slides-workspace .page-heading{padding:0 8px}.slides-workspace .page-heading h1{font-size:23px}.slide-toolbar{padding:0 6px}.slide-meta .muted{display:none}.slide-toolbar .button-row{margin-left:auto}.slide-controls{gap:10px}.slide-controls>.btn{min-width:65px;font-size:12px;padding:9px}.slide-nav{gap:5px 8px}.slide-nav>small{font-size:8px;white-space:normal}.admin-kpi{flex-wrap:wrap;gap:7px}.admin-kpi>strong{font-size:50px}.admin-kpi>div{flex-basis:100%;margin-left:0}.slide-jump{width:100%;margin-top:10px}.slide-jump select{flex:1}.glossary .curriculum-grid{grid-template-columns:1fr 1fr}.quiz-result-row{font-size:11px;grid-template-columns:1fr 50px 15px;gap:8px}.queue-item{align-items:flex-start}.panel>.stat-grid{gap:6px}.panel>.stat-grid .stat-card{padding:14px 10px}.panel>.stat-grid .stat-card strong{font-size:23px}.app-footer{padding-bottom:30px}.slide-grid:has(> :nth-child(3):last-child){grid-template-columns:repeat(3,minmax(0,1fr))}.slide-box{font-size:1.75cqi}.cover .slide-box h3{font-size:2cqi}.cover .slide-box p{font-size:1.6cqi}.slide-page .btn{font-size:1.6cqi;min-height:0;padding:.8cqi 1.2cqi}.slide-stage:fullscreen>.slide-page{width:100vw;height:56.25vw}.slide-subtitle{margin-top:1cqi}.slide-grid{margin-top:1.7cqi;gap:1.1cqi}.slide-content{margin-top:1.5cqi}}
+@media print{@page{size:338.666mm 190.5mm;margin:0}.print-slide{width:338.666mm;height:190.5mm;overflow:hidden!important}.print-slide .slide-page{overflow:hidden!important}.print-slide .slide-content{margin-top:2cqi}.print-slide .slide-title{font-size:4.4cqi}.print-slide .cover .slide-title{font-size:6.1cqi}.print-slide .slide-subtitle{font-size:1.65cqi}.print-slide .slide-box{font-size:1.65cqi}.print-slide .slide-box h3{font-size:2.1cqi}.print-slide .slide-kicker{font-size:1.08cqi}.print-slide .prompt-code{font-size:1.5cqi}.print-slide .slide-footer{font-size:.95cqi}.print-slide .quiz-option{font-size:1.75cqi}.print-slide .slide-box-number{font-size:1.1cqi}}
+
+/* Presentation route keeps its 16:9 stage inside the desktop viewport. */
+body[data-route="slides"] .app-footer{display:none}.slides-workspace .page-heading,.slides-workspace>.notice{display:none}.slides-workspace{margin:22px auto;padding-bottom:12px;display:flex;flex-direction:column}.slides-workspace .slide-stage{align-self:center;width:min(100%,calc((100dvh - 320px)*1.777778))}.slides-workspace .slide-toolbar,.slides-workspace .slide-controls,.slides-workspace .slide-outline{width:100%;max-width:1200px;align-self:center}.slide-page.cover .slide-grid:has(> :only-child){grid-template-columns:minmax(0,1fr);max-width:65%}.slide-page.cover{justify-content:flex-start}.slide-page.cover .slide-content{margin-top:4cqi}.slide-stage{outline:none}.slide-stage:fullscreen{width:100vw!important;height:100vh!important;max-width:none!important}.timer-display{font-variant-numeric:tabular-nums}
+@media(max-width:800px){.slides-workspace .slide-stage{width:100%}.slides-workspace{margin:22px auto}.slides-workspace .slide-toolbar{padding:0 4px}.slides-workspace .slide-controls{padding:0 4px}.slide-nav .progress-track{min-width:30px}}
+
+/* More content room without clipping cards or reducing their reading size. */
+.slide-page{padding:3.3cqi 5cqi 4.5cqi}.slide-kicker{margin-bottom:0;font-size:1.05cqi}.slide-content{flex:0 0 auto;margin-top:2cqi}.slide-title{font-size:4.1cqi}.slide-subtitle{margin-top:.8cqi;font-size:1.6cqi}.slide-grid{margin-top:1.6cqi;gap:1.2cqi}.slide-box{padding:1.3cqi 1.6cqi;font-size:1.65cqi;line-height:1.5}.slide-box h3{font-size:2cqi;margin-bottom:.6cqi}.slide-box-number{margin-bottom:.6cqi;font-size:1cqi}.slide-footer{left:5cqi;right:5cqi;bottom:1.5cqi}.practice-timer{margin-top:1.2cqi}.practice-timer .timer-display{font-size:3.2cqi}.slide-page.cover .slide-content{margin-top:6cqi}.slide-page.cover .slide-grid{margin-top:3cqi}.prompt-page .slide-content{margin-top:2cqi}.quiz-options{margin-top:1.8cqi}
+@media(max-width:540px){.slide-page{padding:3.3cqi 5cqi 4.5cqi}.slide-title{font-size:4.1cqi}.slide-subtitle{font-size:1.8cqi}.slide-kicker{font-size:1.5cqi}.slide-content{margin-top:1.6cqi}.slide-box{padding:1.3cqi 1.6cqi;font-size:1.75cqi}.slide-box h3{font-size:2.2cqi}.slide-box-number{font-size:1.2cqi}.slide-footer{font-size:1.4cqi;bottom:1.5cqi}.slide-page.cover .slide-title{font-size:6.1cqi}.slide-page.cover .slide-content{margin-top:6cqi}}
+
+/* Web Game Class: course-specific, offline-first additions. */
+.hero-panel{border:1.5px solid #191a18;box-shadow:5px 5px 0 #191a18;border-radius:12px}.today-card{border:1.5px solid #191a18;box-shadow:4px 4px 0 #191a18;border-radius:12px}.hero-grid{gap:28px}.hero-panel h1{font-size:clamp(42px,5vw,64px);letter-spacing:-.07em}.hero-panel .hero-description{font-size:20px}.curriculum-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.module-card{border:1.5px solid #191a18;box-shadow:3px 3px 0 #191a18;border-radius:10px}.game-feature{display:grid;grid-template-columns:1.5fr 1fr;align-items:center;gap:48px;padding:34px;background:#fff;border:1.5px solid #191a18;border-radius:12px;margin:30px 0 32px;box-shadow:4px 4px 0 #191a18}.game-feature h2{font-size:30px;line-height:1.35;margin-bottom:18px;letter-spacing:-.05em}.game-feature p.muted{line-height:1.9;max-width:540px}.game-feature .button-row{margin:24px 0 15px}.game-feature small.muted{font-size:11px;display:block}.game-poster{position:relative;min-height:250px;border:2px solid #191a18;border-radius:10px;background:#f7f7f0;overflow:hidden;background-image:radial-gradient(#191a181c 1.2px,transparent 1.2px);background-size:18px 18px}.poster-bar{display:flex;justify-content:space-between;border-bottom:2px solid #191a18;background:#fff;padding:12px 15px;font:700 11px/1.5 monospace;letter-spacing:.06em}.poster-star{display:grid;place-items:center;min-height:150px}.poster-star svg{filter:drop-shadow(4px 4px 0 #191a18)}.poster-base{padding:13px 18px;display:flex;justify-content:space-between;align-items:center;background:#191a18;color:#fff}.poster-base strong{font-size:17px}.poster-base span{font:10px/1.4 monospace;color:#e8b62c;letter-spacing:.05em}.game-demo-frame{width:100%;height:660px;max-height:72dvh;border:0;display:block;background:#f7f7f0}.modal:has(.game-demo-frame){width:min(860px,100%)}.modal:has(.game-demo-frame) .modal-body{padding:0}.grid-modal{width:min(1220px,100%)}.grid-thumbs{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.thumb-btn{min-width:0;padding:9px;overflow:hidden}.thumb-preview{width:100%;aspect-ratio:16/9;container-type:inline-size;overflow:hidden;border:1px solid #ddd;border-radius:5px;pointer-events:none;margin-bottom:12px}.thumb-preview .slide-page{padding:4cqi 5cqi 6cqi}.thumb-preview .slide-title{font-size:4.4cqi}.thumb-preview .cover .slide-title{font-size:6.1cqi}.thumb-preview .slide-subtitle{font-size:1.65cqi}.thumb-preview .slide-box{font-size:1.65cqi}.thumb-preview .slide-box h3{font-size:2.1cqi}.thumb-preview .slide-box-number{font-size:1.1cqi}.thumb-preview .prompt-code{font-size:1.5cqi}.thumb-preview .quiz-option{font-size:1.75cqi}.thumb-preview .quiz-feedback{font-size:1.3cqi}.thumb-preview .slide-footer{font-size:1cqi}.thumb-preview .practice-timer .timer-display{font-size:3.8cqi}.thumb-number{margin:0 0 5px;font-size:9px}.thumb-title{font-size:12px}.slide-page[data-kind="break"]{background:#f2e8c8}.slide-page[data-kind="break"] .slide-title{font-size:5.8cqi}.slide-stage:fullscreen{container-type:size}.slide-stage:fullscreen>.slide-page{container-type:inline-size}.slide-stage:fullscreen .slide-content{margin-top:2cqi}.slide-page .prompt-code{line-height:1.7}.slide-page[data-kind="prompt"] .slide-title{font-size:4cqi}.slide-page[data-kind="quiz"] .slide-title{font-size:4cqi}
+@media(max-width:800px){.game-feature{gap:25px;grid-template-columns:1fr 1fr;padding:25px}.game-feature h2{font-size:25px}.game-feature .button-row{align-items:stretch}.game-feature .btn{white-space:normal}.grid-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.hero-panel h1{font-size:43px}.hero-panel .hero-description{font-size:17px}.hero-grid{gap:23px}.game-feature{grid-template-columns:1fr;padding:24px;margin:28px 0;gap:25px}.game-feature h2{font-size:26px}.game-feature .btn{font-size:11px}.game-poster{min-height:210px}.poster-star{min-height:130px}.curriculum-grid{grid-template-columns:1fr}.grid-thumbs{gap:10px}.thumb-btn{padding:7px}.thumb-preview{margin-bottom:8px}.thumb-title{font-size:10px}.thumb-number{font-size:8px}.game-demo-frame{height:680px;max-height:75dvh}.slide-page[data-kind="prompt"] .prompt-code{font-size:1.8cqi;line-height:1.55}.slide-page[data-kind="prompt"] .slide-subtitle{font-size:1.9cqi}}
+@media print{.game-feature{display:none}.print-slide .slide-page{container-type:normal}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+<header class="app-header">
+<a class="brand" href="#home" aria-label="웹게임교실 홈"><span class="brand-mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8m-4-5v5M7 7h10M7 11h6"/></svg></span><span><strong>웹게임교실</strong><small>WEB GAME CLASS</small></span></a>
+<nav class="main-nav" aria-label="주 메뉴"><button data-route="home">강의 안내</button><button data-route="slides">웹슬라이드</button><button data-route="participate">수업 참여</button><button data-route="resources">자료실</button><button data-route="admin">관리자</button></nav>
+<div class="header-meta"><span class="status-dot"></span><span>로컬 실습 모드</span></div>
+</header>
+<main id="main" tabindex="-1"></main>
+<footer class="app-footer"><span>WEB GAME CLASS · 바이브코딩으로 만드는 나만의 첫 게임</span><span>45분 × 3차시 · 웹게임 제작 수업 · 로컬 실행 버전</span></footer>
+<div id="modal-root"></div><div id="toast" class="toast" role="status" aria-live="polite" hidden></div><div id="print-root" aria-hidden="true"></div>
+<script>window.WEBGAME_DEMO_HTML = "<!doctype html>\n<html lang=\"ko\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"color-scheme\" content=\"light\">\n<title>별 잡기</title>\n<style>\n:root{font-family:system-ui,-apple-system,\"Malgun Gothic\",sans-serif;color:#151515;background:#e8b62c;font-synthesis:none}\n*{box-sizing:border-box}\nbody{margin:0;padding:10px;min-width:280px}\nmain{max-width:720px;margin:0 auto}\nh1{font-size:clamp(24px,6vw,34px);line-height:1;margin:0}\nheader{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}\n.tag{font-size:12px;font-weight:800;border:2px solid;background:white;padding:4px 7px;white-space:nowrap}\n.panel{background:white;border:3px solid;box-shadow:4px 4px 0 #151515;padding:10px}\n.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-bottom:8px}\n.stat{text-align:center;border:2px solid;padding:4px 1px;background:#fff}\n.stat span{display:block;font-size:11px;font-weight:700}\n.stat strong{display:block;font-size:21px;line-height:1.2;font-variant-numeric:tabular-nums}\n.settings{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:13px;font-weight:800}\nselect,button{font:inherit;color:inherit;border:2px solid #151515;border-radius:0}\nselect{min-height:48px;flex:1;min-width:0;background:white;padding:5px}\n.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:9px}\n.controls button{min-height:48px;background:#e8b62c;font-weight:800;box-shadow:2px 2px 0 #151515;cursor:pointer;padding:4px}\n.controls button:active:not(:disabled){transform:translate(2px,2px);box-shadow:none}\nbutton:disabled{opacity:.48;cursor:not-allowed}\nbutton:focus-visible,select:focus-visible{outline:3px solid #164bb5;outline-offset:3px}\n#field{height:clamp(145px,32vh,300px);position:relative;border:2px solid;background:#f7f5ed;overflow:hidden;isolation:isolate}\n#field::before{content:\"별을 누르세요\";position:absolute;inset:0;display:grid;place-items:center;color:#777;font-size:14px;font-weight:700;pointer-events:none}\n#field.playing::before{content:\"\"}\n#target{position:absolute;left:0;top:0;width:58px;height:58px;padding:7px;background:#e8b62c;box-shadow:3px 3px 0 #151515;cursor:pointer;touch-action:manipulation;z-index:1}\n#target svg{display:block;width:100%;height:100%;pointer-events:none}\n#target[hidden]{display:none}\n#status{font-size:13px;font-weight:700;min-height:36px;line-height:1.35;margin:8px 0 0}\ndetails{font-size:12px;line-height:1.5;margin-top:10px}\nsummary{cursor:pointer;font-weight:800;min-height:28px}\ndetails p{margin:4px 0}\n@media(max-height:540px){body{padding:7px}header{margin-bottom:6px}h1{font-size:24px}.panel{padding:7px}.stat{padding:2px 1px}.stat span{font-size:10px}.stat strong{font-size:18px}.settings{margin-bottom:5px}select{min-height:48px}#field{height:128px}.stats{margin-bottom:5px}.controls{margin-bottom:6px}#status{margin-top:5px;min-height:34px;font-size:12px}details{margin-top:7px}}\n@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.controls button:active:not(:disabled){transform:none}}\n</style>\n</head>\n<body>\n<main>\n<header><h1>별 잡기</h1><span class=\"tag\">30초 반응 챌린지</span></header>\n<section class=\"panel\" aria-label=\"별 잡기 게임\">\n<div class=\"stats\" aria-label=\"게임 기록\">\n<div class=\"stat\"><span>남은 시간</span><strong id=\"time\">30.0</strong></div>\n<div class=\"stat\"><span>점수</span><strong id=\"score\">0</strong></div>\n<div class=\"stat\"><span>놓침</span><strong id=\"misses\">0</strong></div>\n<div class=\"stat\"><span>최고 점수</span><strong id=\"best\">0</strong></div>\n</div>\n<div class=\"settings\"><label for=\"difficulty\">난이도</label><select id=\"difficulty\"><option value=\"easy\">쉬움 · 별 유지 1.8초</option><option value=\"normal\" selected>보통 · 별 유지 1.2초</option><option value=\"hard\">어려움 · 별 유지 0.8초</option></select></div>\n<div class=\"controls\"><button id=\"start\" type=\"button\">시작</button><button id=\"pause\" type=\"button\" disabled>일시정지</button><button id=\"restart\" type=\"button\" disabled>다시 시작</button></div>\n<div id=\"field\" aria-label=\"별이 나타나는 게임 영역\">\n<button id=\"target\" type=\"button\" aria-label=\"별 잡기, 누르면 1점\" hidden><svg viewBox=\"0 0 48 48\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M24 3 30 16 45 18 34 29 37 44 24 36 11 44 14 29 3 18 18 16Z\" fill=\"white\" stroke=\"black\" stroke-width=\"3\" stroke-linejoin=\"round\"/></svg></button>\n</div>\n<p id=\"status\" role=\"status\" aria-live=\"polite\" aria-atomic=\"true\">시작을 누르고 별을 잡으세요. 별 1개 = 1점!</p>\n</section>\n<details><summary>게임 방법 · 키보드 안내</summary><p>30초 동안 별 버튼을 클릭하거나 터치하세요. 별을 잡으면 1점, 제한 시간 안에 못 잡으면 놓침 1회입니다. 빈 배경 클릭은 놓침에 포함되지 않습니다.</p><p>시작하면 별에 초점이 갑니다. 키보드는 별에 초점을 둔 채 Space 또는 Enter를 한 번씩 누르세요. 키를 계속 누르기는 점수가 되지 않습니다. Tab으로 조작 버튼을 이동할 수 있습니다.</p><p>일시정지는 게임 시간과 현재 별의 남은 시간을 모두 보존합니다. 다른 탭으로 이동해도 자동 정지되며, 돌아온 뒤 ‘계속’을 누르세요. 진행 중 난이도 변경은 잠깁니다.</p><p>최고 점수는 난이도별로 이 브라우저에 저장됩니다. 파일 저장소가 차단되면 이번 실행 동안만 유지됩니다. 소리나 외부 연결은 없습니다.</p></details>\n</main>\n<script>\n'use strict';\n// 수업 포인트 1: 화면 요소를 한 번만 찾아 이름표처럼 보관합니다.\nconst byId = id => document.getElementById(id);\nconst ui = Object.fromEntries(['time','score','misses','best','difficulty','start','pause','restart','field','target','status'].map(id => [id, byId(id)]));\nconst ROUND_MS = 30000;\nconst lifetimes = {easy:1800, normal:1200, hard:800};\n// 다른 페이지와 기록이 섞이지 않도록 이 게임만의 저장 키를 씁니다.\nconst STORAGE_KEY = 'kr.byeoljapgi.standalone.v1.highscores';\nconst records = {easy:0, normal:0, hard:0};\ntry {\n  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');\n  for (const level of Object.keys(records)) {\n    if (Number.isSafeInteger(saved?.[level]) && saved[level] >= 0) records[level] = saved[level];\n  }\n} catch { /* 파일로 열 때 저장이 막혀도 게임은 계속 동작합니다. */ }\nlet state = 'ready';\nlet level = ui.difficulty.value;\nlet score = 0;\nlet misses = 0;\nlet remaining = ROUND_MS;\nlet targetRemaining = lifetimes[level];\nlet gameDeadline = 0;\nlet targetDeadline = 0;\nlet frame = 0;\nlet keyboardHeld = false;\n\nfunction announce(message) { ui.status.textContent = message; }\nfunction paint() {\n  ui.time.textContent = (Math.ceil(Math.max(0, remaining) / 100) / 10).toFixed(1);\n  ui.score.textContent = score;\n  ui.misses.textContent = misses;\n  ui.best.textContent = records[level];\n}\nfunction saveBest() {\n  if (score <= records[level]) return;\n  records[level] = score;\n  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(records)); }\n  catch { /* 저장 실패 시에도 메모리에 최고 점수를 유지합니다. */ }\n}\nfunction controls() {\n  const active = state === 'running' || state === 'paused';\n  ui.start.disabled = active;\n  ui.pause.disabled = !active;\n  ui.pause.textContent = state === 'paused' ? '계속' : '일시정지';\n  ui.restart.disabled = state === 'ready';\n  ui.difficulty.disabled = active;\n  ui.target.hidden = state !== 'running';\n  ui.field.classList.toggle('playing', state === 'running');\n}\n// 수업 포인트 2: 별 크기와 그림자를 빼면 작은 화면에서도 밖으로 나가지 않습니다.\nfunction relocate() {\n  const maxX = Math.max(0, ui.field.clientWidth - 58 - 5);\n  const maxY = Math.max(0, ui.field.clientHeight - 58 - 5);\n  ui.target.style.left = Math.floor(Math.random() * maxX) + 'px';\n  ui.target.style.top = Math.floor(Math.random() * maxY) + 'px';\n}\nfunction finish() {\n  state = 'ended';\n  remaining = 0;\n  cancelAnimationFrame(frame);\n  saveBest();\n  paint();\n  controls();\n  announce('종료! 점수 ' + score + '점, 놓침 ' + misses + '회. 이 난이도 최고 ' + records[level] + '점입니다. 다시 도전해 보세요.');\n  // 별에 있던 초점이 사라지면 다시 시작 버튼으로 안전하게 이동합니다.\n  if (document.activeElement === ui.target || document.activeElement === document.body) ui.restart.focus({preventScroll:true});\n}\n// 수업 포인트 3: 프레임마다 시간을 빼지 않고 절대 마감 시각과 비교합니다.\n// 느린 컴퓨터에서도 30초가 길어지지 않으며, 누락된 별 시간도 계산합니다.\nfunction synchronize(now) {\n  if (state !== 'running') return false;\n  const cutoff = Math.min(now, gameDeadline);\n  if (targetDeadline < gameDeadline && targetDeadline <= cutoff) {\n    const elapsedTargets = Math.min(\n      Math.floor((cutoff - targetDeadline) / lifetimes[level]) + 1,\n      Math.ceil((gameDeadline - targetDeadline) / lifetimes[level])\n    );\n    misses += elapsedTargets;\n    targetDeadline += elapsedTargets * lifetimes[level];\n    relocate();\n  }\n  remaining = Math.max(0, gameDeadline - now);\n  if (now >= gameDeadline) { finish(); return false; }\n  targetRemaining = Math.max(0, targetDeadline - now);\n  paint();\n  return true;\n}\nfunction tick(now) {\n  if (synchronize(now)) frame = requestAnimationFrame(tick);\n}\nfunction begin() {\n  cancelAnimationFrame(frame);\n  level = ui.difficulty.value;\n  state = 'running';\n  score = 0;\n  misses = 0;\n  remaining = ROUND_MS;\n  targetRemaining = lifetimes[level];\n  const now = performance.now();\n  gameDeadline = now + remaining;\n  targetDeadline = now + targetRemaining;\n  controls();\n  relocate();\n  paint();\n  announce('시작! 별을 잡으세요. 시간 초과만 놓침으로 셉니다.');\n  ui.target.focus({preventScroll:true});\n  frame = requestAnimationFrame(tick);\n}\nfunction pauseGame(automatic = false) {\n  if (!synchronize(performance.now())) return;\n  // 반올림하지 않은 밀리초 값을 보관하므로 재개해도 시간이 깎이지 않습니다.\n  state = 'paused';\n  cancelAnimationFrame(frame);\n  const targetHadFocus = document.activeElement === ui.target;\n  controls();\n  announce(automatic ? '탭이 숨겨져 자동 정지했습니다. 계속을 누르면 이어집니다.' : '일시정지했습니다. 시간과 별의 남은 시간을 보존합니다.');\n  if (targetHadFocus) ui.pause.focus({preventScroll:true});\n}\nfunction resume() {\n  if (state !== 'paused' || document.hidden) return;\n  const now = performance.now();\n  gameDeadline = now + remaining;\n  targetDeadline = now + targetRemaining;\n  state = 'running';\n  controls();\n  announce('다시 시작합니다. 별을 잡으세요!');\n  ui.target.focus({preventScroll:true});\n  frame = requestAnimationFrame(tick);\n}\nui.start.addEventListener('click', begin);\nui.restart.addEventListener('click', begin);\nui.pause.addEventListener('click', () => state === 'running' ? pauseGame() : resume());\nui.difficulty.addEventListener('change', () => {\n  level = ui.difficulty.value;\n  paint();\n  announce('난이도를 바꿨습니다. 시작을 누르세요.');\n});\nui.target.addEventListener('click', event => {\n  // 키보드는 아래 keydown에서 직접 처리합니다. 합성 click은 중복 가산하지 않습니다.\n  // 보조 기술이 보내는 detail=0 클릭은 키를 누른 상태가 아닐 때 허용합니다.\n  if (event.detail === 0 && keyboardHeld) return;\n  hit();\n});\nfunction hit() {\n  if (state !== 'running') return;\n  const now = performance.now();\n  // 이미 시간이 지난 별을 눌렀다면 새로 나타난 별의 점수로 처리하지 않습니다.\n  const expired = now >= targetDeadline;\n  if (!synchronize(now) || expired) return;\n  score += 1;\n  saveBest();\n  targetDeadline = now + lifetimes[level];\n  targetRemaining = lifetimes[level];\n  relocate();\n  paint();\n}\n// 수업 포인트 4: 별에 초점이 있을 때만 키 입력을 받습니다. 전역 점수 단축키는 없습니다.\nui.target.addEventListener('keydown', event => {\n  if (event.key !== ' ' && event.key !== 'Enter') return;\n  event.preventDefault();\n  if (event.repeat || keyboardHeld) return;\n  keyboardHeld = true;\n  hit();\n});\ndocument.addEventListener('keyup', event => {\n  if (event.key === ' ' || event.key === 'Enter') {\n    // 기본 Space 클릭을 차단하고 한 번 누를 때 한 번만 가산합니다.\n    if (event.target === ui.target) event.preventDefault();\n    keyboardHeld = false;\n  }\n});\nwindow.addEventListener('blur', () => { keyboardHeld = false; });\ndocument.addEventListener('visibilitychange', () => {\n  keyboardHeld = false;\n  if (document.hidden && state === 'running') pauseGame(true);\n});\nwindow.addEventListener('resize', () => { if (state === 'running' || state === 'paused') relocate(); });\npaint();\ncontrols();\n<\/script>\n</body>\n</html>\n";
+</script><script>window.COURSE_DEFAULTS = {
+  "id": "webgame-class-v1",
+  "title": "웹게임교실",
+  "subtitle": "바이브코딩으로 완성하는 나만의 첫 게임",
+  "audience": "중학교 1학년 · 코딩 입문자",
+  "instructor": "수업 선생님",
+  "date": "수업 일정에 맞춰 진행",
+  "duration": "45분 × 3차시 + 휴식 20분",
+  "description": "AI에게 원하는 동작을 설명하고 결과를 직접 검증하며 브라우저 반응 게임 ‘별 잡기’를 만든다. 30초 동안 별을 눌러 점수를 얻는 기본 게임에서 출발해 규칙, 시간 처리, 접근성을 차례로 개선한다. 개인 정보 없이 로컬 파일로 제작하고 짝과 시험한 뒤 교사가 승인한 방식으로만 공유한다.",
+  "modules": [
+    {
+      "id": "first",
+      "title": "1차시 · 첫 게임 제작",
+      "time": "00:00",
+      "summary": "안전한 AI 사용, 웹의 세 가지 언어, 구체적인 요청과 game.html 저장으로 첫 실행 완성",
+      "minutes": 45
+    },
+    {
+      "id": "rules",
+      "title": "2차시 · 규칙과 재미",
+      "time": "00:55",
+      "summary": "상태와 시간 원리를 이해하고 한 가지씩 수정하며 재현 가능한 오류 해결",
+      "minutes": 45
+    },
+    {
+      "id": "finish",
+      "title": "3차시 · 나만의 게임 완성",
+      "time": "01:50",
+      "summary": "모바일·키보드 점검, 짝 테스트, 로컬 시연과 완성 체크",
+      "minutes": 45
+    }
+  ],
+  "resources": [
+    {
+      "id": "release-check",
+      "title": "게임 완성 체크리스트",
+      "description": "game.html로 저장 / 시작 전 득점 불가 / 시작 시 0점·30초 / 별 1회에 1점 / 종료 후 득점 불가 / 재시작 초기화 / 실제 경과 시간 반영 / 모바일·키보드 조작 / 개인 정보·외부 의존성 없음 / 로컬 시연 준비",
+      "type": "checklist"
+    },
+    {
+      "id": "design-prompts",
+      "title": "게임 제작 프롬프트",
+      "description": "슬라이드 08의 기본 제작 요청, 12의 오류 보고, 19의 상태 수정, 21의 시간 수정, 25의 난도 변경, 28의 검토, 33의 키보드 개선, 35의 꾸미기 요청을 복사해 사용한다. 한 번에 하나만 요청하고 바뀐 부분을 직접 시험한다.",
+      "type": "prompts"
+    },
+    {
+      "id": "operation-notes",
+      "title": "수업 진행 안내",
+      "description": "00:00~00:45 1차시, 00:45~00:55 휴식, 00:55~01:40 2차시, 01:40~01:50 휴식, 01:50~02:35 3차시. 교사 승인 AI 계정과 일반 텍스트 편집기·브라우저를 준비한다. 계정이나 네트워크 문제가 있으면 교사가 사전 검토한 기본 파일로 같은 테스트를 수행한다. 공개 게시와 결제는 필요 없다.",
+      "type": "notes"
+    }
+  ],
+  "glossary": [
+    {
+      "term": "바이브코딩",
+      "definition": "원하는 동작을 말로 설명해 AI의 코딩 도움을 받고, 사람이 실행·검증·수정을 이끄는 제작 방식"
+    },
+    {
+      "term": "프롬프트",
+      "definition": "AI에게 목표, 조건, 확인 방법을 구체적으로 전달하는 요청"
+    },
+    {
+      "term": "HTML",
+      "definition": "제목, 버튼, 점수판처럼 화면에 놓일 요소의 구조를 만드는 언어"
+    },
+    {
+      "term": "CSS",
+      "definition": "색, 크기, 배치 등 화면의 모양을 정하는 언어"
+    },
+    {
+      "term": "JavaScript",
+      "definition": "클릭, 점수 변화, 게임 종료 같은 동작을 만드는 언어"
+    },
+    {
+      "term": "상태",
+      "definition": "대기·진행·종료처럼 현재 게임이 어떤 상황인지 나타내는 값"
+    },
+    {
+      "term": "이벤트",
+      "definition": "버튼 누르기나 키 입력처럼 프로그램이 반응하는 사건"
+    },
+    {
+      "term": "디버깅",
+      "definition": "오류를 다시 일으켜 원인을 좁히고 수정 결과를 확인하는 과정"
+    },
+    {
+      "term": "Date.now()",
+      "definition": "현재 시각을 밀리초 숫자로 알려주는 JavaScript 함수. 시작 시각과의 차이로 경과 시간을 계산한다."
+    },
+    {
+      "term": "접근성",
+      "definition": "마우스뿐 아니라 키보드 등 다양한 방법으로도 사용할 수 있게 만드는 성질"
+    },
+    {
+      "term": "UTF-8",
+      "definition": "한글을 포함한 문자를 파일에 저장하고 읽는 문자 인코딩 방식"
+    },
+    {
+      "term": "textContent",
+      "definition": "문자열을 HTML 코드로 해석하지 않고 화면의 글자로 넣는 속성"
+    }
+  ]
+};
+window.SLIDE_DEFAULTS = [
+  {
+    "id": "s01",
+    "module": "first",
+    "kind": "cover",
+    "title": "웹게임교실",
+    "subtitle": "내 설명이 움직이는 게임으로",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "오늘의 작품",
+        "body": "브라우저에서 30초 동안 별을 눌러 점수를 얻는 ‘별 잡기’ 만들기"
+      },
+      {
+        "title": "오늘의 역할",
+        "body": "나는 기획자이자 시험자, AI는 코드를 제안하는 조력자"
+      }
+    ]
+  },
+  {
+    "id": "s02",
+    "module": "first",
+    "kind": "cards",
+    "title": "완성의 기준",
+    "subtitle": "작지만 끝까지 작동하는 게임",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "시작",
+        "body": "시작 버튼을 누르면 0점과 30초로 출발"
+      },
+      {
+        "title": "진행",
+        "body": "별을 한 번 누르면 1점, 별은 새 위치로 이동"
+      },
+      {
+        "title": "종료",
+        "body": "30초 뒤 점수 확정, 재시작하면 처음 상태로 복귀"
+      }
+    ]
+  },
+  {
+    "id": "s03",
+    "module": "first",
+    "kind": "cards",
+    "title": "안전한 AI 사용",
+    "subtitle": "도움은 받되 판단은 내가",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "승인된 계정",
+        "body": "선생님이 승인한 AI만 사용. 비밀번호·인증번호는 친구나 AI에게 전달 금지"
+      },
+      {
+        "title": "개인 정보 제외",
+        "body": "실명·연락처·얼굴 사진 대신 별명과 가상 예시 사용"
+      },
+      {
+        "title": "결과 검증",
+        "body": "AI 초안에도 오류가 있다. 읽고 실행하고 확인한 뒤 채택"
+      }
+    ]
+  },
+  {
+    "id": "s04",
+    "module": "first",
+    "kind": "cards",
+    "title": "웹의 세 가지 역할",
+    "subtitle": "구조·모양·동작 구별",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "HTML · 구조",
+        "body": "시작 버튼, 별 버튼, 점수판을 놓는 뼈대"
+      },
+      {
+        "title": "CSS · 모양",
+        "body": "별의 색과 크기, 게임판의 배치를 정하는 옷"
+      },
+      {
+        "title": "JS · 동작",
+        "body": "별을 누르면 점수가 오르고 시간이 끝나면 멈추는 규칙"
+      }
+    ]
+  },
+  {
+    "id": "s05",
+    "module": "first",
+    "kind": "steps",
+    "title": "제작의 반복",
+    "subtitle": "작게 요청하고 바로 확인",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "1 · 설명",
+        "body": "누가 무엇을 누르면 어떻게 달라질지 한 문장으로 말하기"
+      },
+      {
+        "title": "2 · 실행",
+        "body": "제안된 코드를 파일로 저장하고 브라우저에서 열기"
+      },
+      {
+        "title": "3 · 검증",
+        "body": "기대한 동작과 실제 결과를 비교하고 한 가지씩 수정"
+      }
+    ]
+  },
+  {
+    "id": "s06",
+    "module": "first",
+    "kind": "quiz",
+    "title": "역할 찾기 퀴즈",
+    "subtitle": "별을 누르면 점수가 1 올라간다",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "선택",
+        "body": "이 동작을 주로 담당하는 언어를 고르기"
+      },
+      {
+        "title": "정답 확인",
+        "body": "JavaScript. HTML은 요소를 만들고 CSS는 모양을 정한다."
+      }
+    ],
+    "options": [
+      "HTML: 점수판 구조를 만들기 때문에",
+      "CSS: 숫자의 색을 바꾸기 때문에",
+      "JavaScript: 클릭에 반응해 값을 바꾸기 때문에"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "s07",
+    "module": "first",
+    "kind": "compare",
+    "title": "요청의 해상도",
+    "subtitle": "느낌을 관찰 가능한 조건으로",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "모호한 요청",
+        "body": "“재미있는 게임 만들어 줘.”는 시간·점수·종료 기준이 비어 있다."
+      },
+      {
+        "title": "구체적인 요청",
+        "body": "“30초 동안 별 1회 클릭에 1점, 종료 후 득점 금지”처럼 확인 가능한 조건 제시"
+      },
+      {
+        "title": "짝 설명",
+        "body": "시작·진행·종료 조건을 짝에게 말하고 빠진 조건 하나 찾기"
+      }
+    ]
+  },
+  {
+    "id": "s08",
+    "module": "first",
+    "kind": "prompt",
+    "title": "첫 제작 요청",
+    "subtitle": "복사해 사용하고 조건을 함께 읽기",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "입력",
+        "body": "승인된 AI에 아래 요청을 전달. AI는 제작 도구이며 게임 안에 연결하지 않기"
+      },
+      {
+        "title": "확인",
+        "body": "외부 설치·결제·API 키가 필요하다는 답이면 멈추고 선생님께 확인"
+      }
+    ],
+    "prompt": "중1 입문자용 브라우저 게임 ‘별 잡기’를 만들어 줘. 외부 라이브러리·통신·AI API 없이 HTML/CSS/JS를 game.html 하나에 넣어 줘. 시작·재시작 버튼, 점수, 남은 시간을 표시해. 시작 시 0점·30초, 별 버튼 1회 클릭에 1점과 위치 이동, 종료 후 득점 금지. 시간은 Date.now()의 경과 시간으로 계산해. 별은 판 안에 배치하고 기본 button과 보이는 키보드 포커스를 사용해. UTF-8 선언을 넣고 전체 코드와 초보자용 저장 방법을 알려 줘."
+  },
+  {
+    "id": "s09",
+    "module": "first",
+    "kind": "practice",
+    "title": "첫 파일 저장",
+    "subtitle": "실습 · 저장부터 실행까지",
+    "minutes": 7,
+    "items": [
+      {
+        "title": "코드 복사",
+        "body": "HTML 전체만 복사. 설명 글과 ``` 같은 코드 울타리는 제외"
+      },
+      {
+        "title": "파일 저장",
+        "body": "일반 텍스트 편집기에서 UTF-8·모든 파일 형식 선택, 이름은 game.html. game.html.txt가 아닌지 확장명 확인"
+      },
+      {
+        "title": "브라우저 실행",
+        "body": "파일을 브라우저로 열고 제목·버튼·점수판 확인. 막히면 교사가 검토한 기본 파일 사용"
+      }
+    ]
+  },
+  {
+    "id": "s10",
+    "module": "first",
+    "kind": "cards",
+    "title": "로컬 실행의 경계",
+    "subtitle": "내 파일을 여는 것으로 충분",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "필요한 동작",
+        "body": "검토한 HTML 파일을 저장하고 브라우저에서 열기. AI는 코드 제안에만 사용"
+      },
+      {
+        "title": "피할 동작",
+        "body": "출처 모를 스크립트를 개발자 콘솔에 붙여 넣지 않기. 보안 경고 해제나 추가 설치는 따라 하지 않기"
+      },
+      {
+        "title": "문제 발생",
+        "body": "낯선 로그인·결제·다운로드 요구가 나오면 중단하고 선생님께 알리기"
+      }
+    ]
+  },
+  {
+    "id": "s11",
+    "module": "first",
+    "kind": "practice",
+    "title": "기본 동작 시험",
+    "subtitle": "실습 · 처음부터 끝까지 한 판",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "시작 전",
+        "body": "별을 눌러도 점수가 오르지 않는지 확인"
+      },
+      {
+        "title": "진행 중",
+        "body": "시작 후 별을 3번 누르고 3점인지 확인. 별이 판 밖으로 나가지 않는지 관찰"
+      },
+      {
+        "title": "종료 후",
+        "body": "30초를 기다린 뒤 별을 눌러도 점수가 그대로인지 확인"
+      }
+    ]
+  },
+  {
+    "id": "s12",
+    "module": "first",
+    "kind": "prompt",
+    "title": "오류 보고 요청",
+    "subtitle": "안 된다는 말 대신 재현 순서",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "관찰 기록",
+        "body": "기대 결과와 실제 결과를 분리. 아래 0점은 자기 관찰로 바꾸기"
+      },
+      {
+        "title": "코드 전달",
+        "body": "개인 정보가 없는 현재 게임 코드만 함께 제공. 원본은 먼저 별도 저장"
+      }
+    ],
+    "prompt": "내 ‘별 잡기’ 게임 오류를 한 가지 고쳐 줘. 재현: 파일 열기 → 시작 누르기 → 별을 한 번 누르기. 기대: 점수가 0에서 1이 되고 별이 이동함. 실제: 점수가 0으로 남음. 아래 현재 코드를 보고 원인을 설명한 뒤, 다른 규칙과 디자인은 유지하며 최소 수정해 줘. 저장할 전체 코드와 같은 순서로 확인할 테스트를 알려 줘. 현재 코드: [여기에 개인 정보 없는 게임 코드 붙이기]"
+  },
+  {
+    "id": "s13",
+    "module": "first",
+    "kind": "practice",
+    "title": "한 가지 오류 해결",
+    "subtitle": "실습 · 수정 전후 비교",
+    "minutes": 6,
+    "items": [
+      {
+        "title": "하나 선택",
+        "body": "발견한 오류 하나만 적기. 오류가 없으면 시작 전 득점과 종료 후 득점을 다시 시험"
+      },
+      {
+        "title": "최소 수정",
+        "body": "오류 보고 요청으로 수정하고 같은 game.html에 저장한 뒤 브라우저 새로고침"
+      },
+      {
+        "title": "재시험",
+        "body": "같은 순서로 반복해 해결 확인. 새 오류가 생기면 저장해 둔 원본으로 돌아가기"
+      }
+    ]
+  },
+  {
+    "id": "s14",
+    "module": "first",
+    "kind": "cards",
+    "title": "첫 완성 기록",
+    "subtitle": "다음 시간의 출발점 확보",
+    "minutes": 4,
+    "items": [
+      {
+        "title": "성공 증거",
+        "body": "시작 화면과 종료 점수를 확인하고 통과한 동작 2개 적기"
+      },
+      {
+        "title": "안전 사본",
+        "body": "작동하는 파일을 game-v1.html로 별도 저장. 다음 수정은 game.html에서 진행"
+      },
+      {
+        "title": "다음 목표",
+        "body": "해결할 오류 또는 개선하고 싶은 점 한 가지 적기"
+      }
+    ]
+  },
+  {
+    "id": "s15",
+    "module": "first",
+    "kind": "break",
+    "title": "휴식 · 10분",
+    "subtitle": "00:45~00:55 · 저장 후 쉬기",
+    "minutes": 10,
+    "items": [
+      {
+        "title": "눈과 몸",
+        "body": "먼 곳을 바라보고 자리 주변에서 가볍게 스트레칭"
+      },
+      {
+        "title": "복귀 준비",
+        "body": "00:55에 game.html을 열고 규칙과 재미 탐구 시작"
+      }
+    ]
+  },
+  {
+    "id": "s16",
+    "module": "rules",
+    "kind": "cards",
+    "title": "규칙의 기준점",
+    "subtitle": "같은 조건에서 다시 확인",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "기준 게임",
+        "body": "game.html을 열어 시작 0점·30초, 별 1회에 1점을 확인"
+      },
+      {
+        "title": "오늘의 목표",
+        "body": "겉모양보다 상태·시간·점수 규칙을 안정적으로 만들기"
+      }
+    ]
+  },
+  {
+    "id": "s17",
+    "module": "rules",
+    "kind": "cards",
+    "title": "게임의 상태",
+    "subtitle": "지금 가능한 행동을 구분",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "대기",
+        "body": "시작 전 상태. 별을 눌러도 점수 변화 없음"
+      },
+      {
+        "title": "진행",
+        "body": "시작 후 30초 안. 유효한 별 누르기만 득점"
+      },
+      {
+        "title": "종료",
+        "body": "시간이 끝난 상태. 최종 점수를 유지하고 재시작 허용"
+      }
+    ]
+  },
+  {
+    "id": "s18",
+    "module": "rules",
+    "kind": "steps",
+    "title": "클릭의 처리 순서",
+    "subtitle": "점수보다 조건 확인이 먼저",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "1 · 자격 확인",
+        "body": "진행 중인지 확인. 아니면 점수를 바꾸지 않고 끝내기"
+      },
+      {
+        "title": "2 · 시간 확인",
+        "body": "실제 경과 시간이 30초 이상이면 종료 처리하고 득점 금지"
+      },
+      {
+        "title": "3 · 득점 처리",
+        "body": "조건을 통과하면 점수에 1을 더하고 별을 한 번 이동"
+      }
+    ]
+  },
+  {
+    "id": "s19",
+    "module": "rules",
+    "kind": "prompt",
+    "title": "상태 보강 요청",
+    "subtitle": "중복 시작과 종료 후 득점 차단",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "좁은 범위",
+        "body": "디자인을 그대로 두고 시작·득점·재시작 규칙만 요청"
+      },
+      {
+        "title": "성공 조건",
+        "body": "시작을 연속으로 눌러도 진행 작업이 중복되지 않기"
+      }
+    ],
+    "prompt": "현재 ‘별 잡기’ 코드의 상태 처리만 보강해 줘. 대기·진행·종료를 구분하고 진행 중에만 득점하게 해. 별 클릭 순간에도 Date.now()로 30초 경과 여부를 확인해 늦은 득점을 막아 줘. 재시작은 기존 예약 작업을 해제하고 점수 0·시간 30초·새 시작 시각으로 초기화해. 이벤트를 중복 등록하지 말고 디자인과 1회 1점 규칙은 유지해. 변경 이유와 전체 코드, 연속 재시작 테스트를 알려 줘. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s20",
+    "module": "rules",
+    "kind": "compare",
+    "title": "시간 계산의 차이",
+    "subtitle": "알림 횟수보다 실제 경과 시간",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "단순 차감",
+        "body": "알림마다 1초씩 빼면 브라우저 지연 때문에 실제 시간과 어긋날 수 있음"
+      },
+      {
+        "title": "시각의 차이",
+        "body": "performance.now()나 Date.now()로 현재 시각을 읽고 종료 시각과의 차이 계산"
+      },
+      {
+        "title": "일시정지",
+        "body": "남은 시간을 저장해 멈추고 재개할 때 새 종료 시각 설정. 예제는 탭 이동 시 자동정지"
+      }
+    ]
+  },
+  {
+    "id": "s21",
+    "module": "rules",
+    "kind": "prompt",
+    "title": "시간 보정 요청",
+    "subtitle": "반복 호출은 화면을 갱신하는 역할",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "핵심 구분",
+        "body": "반복 호출은 화면 갱신용. 시간 계산은 실제 시각 기준"
+      },
+      {
+        "title": "검증 목표",
+        "body": "진행 중 정확한 시간, 정지 중 시간 보존, 재개 후 이어가기"
+      }
+    ],
+    "prompt": "현재 게임의 시간 계산만 개선해 줘. performance.now()로 종료 시각을 정하고 남은 시간은 Math.max(0, 종료시각 - 현재시각)으로 계산해. 반복 호출은 표시 갱신용으로만 사용해. 일시정지 때 게임과 현재 별의 남은 시간을 저장하고, 계속 버튼으로 재개할 때 각각 새 종료 시각을 설정해. 다른 탭으로 이동하면 자동정지하고 돌아와도 계속 버튼을 눌러야 이어지게 해. 별 클릭 때도 만료를 검사하고 재시작 때 이전 예약을 정리해. 다른 기능은 유지해. 전체 코드와 테스트를 줘. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s22",
+    "module": "rules",
+    "kind": "quiz",
+    "title": "시간 퀴즈",
+    "subtitle": "멈추지 않고 12초 동안 진행한 30초 게임",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "상황",
+        "body": "정지 없이 12초가 지난 상황. 남은 시간 계산으로 알맞은 방법은?"
+      },
+      {
+        "title": "정답 확인",
+        "body": "실제 시각 차이를 사용. 12초 진행했다면 약 18초가 남고 일시정지 중에는 줄지 않음"
+      }
+    ],
+    "options": [
+      "실행된 타이머 알림 횟수만 세어 30에서 빼기",
+      "저장된 종료 시각에서 현재 시각을 빼기",
+      "화면을 다시 그릴 때마다 30초로 바꾸기"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "s23",
+    "module": "rules",
+    "kind": "cards",
+    "title": "공정한 별 배치",
+    "subtitle": "누를 수 있는 영역 안에",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "가로 범위",
+        "body": "게임판 내부 너비에서 별 너비를 뺀 범위 안에서 위치 선택"
+      },
+      {
+        "title": "세로 범위",
+        "body": "게임판 내부 높이에서 별 높이를 뺀 범위 안에서 위치 선택"
+      },
+      {
+        "title": "크기 변화",
+        "body": "화면이 작아져도 별이 잘리지 않도록 범위를 다시 계산하고 위치 제한"
+      }
+    ]
+  },
+  {
+    "id": "s24",
+    "module": "rules",
+    "kind": "practice",
+    "title": "규칙 묶음 시험",
+    "subtitle": "실습 · 수정은 한 번에 한 가지",
+    "minutes": 7,
+    "items": [
+      {
+        "title": "초기화",
+        "body": "3점에서 재시작 → 0점·30초 확인"
+      },
+      {
+        "title": "시간과 정지",
+        "body": "12초 진행 → 약 18초. 정지 중에는 시간 고정, 계속 누르면 재개"
+      },
+      {
+        "title": "종료",
+        "body": "활성 화면에서 30초 경과 → 종료 후 별을 눌러도 점수 고정"
+      }
+    ]
+  },
+  {
+    "id": "s25",
+    "module": "rules",
+    "kind": "prompt",
+    "title": "난도 변경 요청",
+    "subtitle": "규칙을 유지하고 크기만 조절",
+    "minutes": 2,
+    "items": [
+      {
+        "title": "한 가지 변수",
+        "body": "별 크기만 바꾸기. 제한 시간과 점수는 그대로 유지"
+      },
+      {
+        "title": "검증 기준",
+        "body": "쉬움과 기본 모두 별이 판 안에 있고 쉽게 누를 수 있어야 함"
+      }
+    ],
+    "prompt": "‘별 잡기’에 시작 전 고르는 난도 선택 하나만 추가해 줘. 쉬움은 별 버튼 72px, 기본은 56px로 해. 두 난도 모두 30초·1회 1점이며 진행 중에는 난도 변경을 잠가 줘. 버튼 크기를 고려해 별이 게임판 밖으로 나가지 않게 해. 재시작 시 선택한 난도를 유지하고 나머지 디자인·시간 계산은 바꾸지 마. 전체 코드와 두 난도의 경계 위치 테스트 방법을 알려 줘. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s26",
+    "module": "rules",
+    "kind": "cards",
+    "title": "비교의 방법",
+    "subtitle": "한 번의 점수로 단정하지 않기",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "조건 통일",
+        "body": "같은 사람이 같은 기기로 쉬움과 기본을 각각 한 판씩 실행"
+      },
+      {
+        "title": "관찰 분리",
+        "body": "점수와 “누르기 편함”을 따로 기록. 연습과 무작위 위치도 결과에 영향"
+      },
+      {
+        "title": "결론 제한",
+        "body": "“이번 두 판에서는”으로 설명. 한 번의 점수만으로 모두에게 더 쉽다고 단정하지 않기"
+      }
+    ]
+  },
+  {
+    "id": "s27",
+    "module": "rules",
+    "kind": "practice",
+    "title": "난도 비교 실험",
+    "subtitle": "실습 · 한 가지 변화의 효과",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "적용",
+        "body": "사본 저장 후 별 크기 난도를 추가. 기본 게임이 불안정하면 기능 추가 대신 오류 해결"
+      },
+      {
+        "title": "실행",
+        "body": "쉬움과 기본을 각각 30초 플레이하고 점수·누르기 편함 기록"
+      },
+      {
+        "title": "판단",
+        "body": "별 잘림과 재시작 오류 확인. 도움이 없거나 고장 나면 이전 버전으로 복귀"
+      }
+    ]
+  },
+  {
+    "id": "s28",
+    "module": "rules",
+    "kind": "prompt",
+    "title": "코드 검토 요청",
+    "subtitle": "AI의 판단도 시험으로 확인",
+    "minutes": 6,
+    "items": [
+      {
+        "title": "먼저 검토",
+        "body": "아래 요청으로 문제 후보를 받되 곧바로 전체를 다시 만들지 않기"
+      },
+      {
+        "title": "하나 확인",
+        "body": "후보 하나를 직접 재현. 확인된 오류만 최소 수정하고 재시험"
+      },
+      {
+        "title": "완료 기준",
+        "body": "재시작 3회 후에도 점수가 한 번에 1씩 오르는지 확인"
+      }
+    ],
+    "prompt": "아래 ‘별 잡기’ 코드를 검토해 줘. 아직 수정 코드는 쓰지 마. 시작 전·종료 후 득점, 재시작 초기화, 중복 이벤트·예약 작업, Date.now() 기반 시간 계산, 별의 판 밖 배치를 확인해. 발견한 문제마다 관련 코드, 재현 순서, 기대 결과를 짧게 제시해. 확실하지 않은 항목은 추정이라고 표시하고 문제가 없으면 없다고 해. 개인 정보를 넣는 기능과 외부 통신은 제안하지 마. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s29",
+    "module": "rules",
+    "kind": "cards",
+    "title": "규칙 버전 확정",
+    "subtitle": "수정의 이유를 설명할 수 있게",
+    "minutes": 4,
+    "items": [
+      {
+        "title": "통과 확인",
+        "body": "0점·30초 초기화, 종료 후 점수 고정, 실제 경과 시간 반영을 다시 확인"
+      },
+      {
+        "title": "버전 보관",
+        "body": "작동하는 현재 파일을 game-v2.html로 복사. 미해결 오류는 재현 순서와 함께 기록"
+      },
+      {
+        "title": "한 문장 설명",
+        "body": "“나는 ___를 바꿨고, ___ 시험으로 확인했다.”를 짝에게 말하기"
+      }
+    ]
+  },
+  {
+    "id": "s30",
+    "module": "rules",
+    "kind": "break",
+    "title": "휴식 · 10분",
+    "subtitle": "01:40~01:50 · 파일 저장 확인",
+    "minutes": 10,
+    "items": [
+      {
+        "title": "잠깐 환기",
+        "body": "화면에서 눈을 떼고 손목과 어깨를 편안히 풀기"
+      },
+      {
+        "title": "다음 준비",
+        "body": "01:50에 복귀. 마지막 시간은 조작 개선과 짝 테스트"
+      }
+    ]
+  },
+  {
+    "id": "s31",
+    "module": "finish",
+    "kind": "cards",
+    "title": "완성 우선순위",
+    "subtitle": "추가보다 안정적인 한 판",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "필수",
+        "body": "시작·재시작·점수·시간·종료가 제대로 동작하는지 먼저 확인"
+      },
+      {
+        "title": "개선",
+        "body": "기본이 통과하면 모바일과 키보드 조작을 다듬기"
+      },
+      {
+        "title": "선택",
+        "body": "꾸미기는 마지막. 미해결 오류가 있으면 새 기능보다 해결 우선"
+      }
+    ]
+  },
+  {
+    "id": "s32",
+    "module": "finish",
+    "kind": "cards",
+    "title": "모바일 조작",
+    "subtitle": "작은 화면에서도 누르기 쉽게",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "화면 맞춤",
+        "body": "게임판은 화면 너비에 맞추고 가로 넘침과 별 잘림을 없애기"
+      },
+      {
+        "title": "터치 크기",
+        "body": "주요 버튼은 최소 44×44 CSS px 권장. 버튼 사이 간격과 글자 대비 확보"
+      },
+      {
+        "title": "실제 확인",
+        "body": "허용된 기기에서 터치 시험. 기기가 없으면 브라우저 창을 좁혀 배치를 확인하되 터치 검증은 미실시로 기록"
+      }
+    ]
+  },
+  {
+    "id": "s33",
+    "module": "finish",
+    "kind": "prompt",
+    "title": "키보드 개선 요청",
+    "subtitle": "마우스 없이도 시작과 득점",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "기본 버튼",
+        "body": "Tab으로 이동하고 Enter·Space로 누를 수 있는 실제 button 사용"
+      },
+      {
+        "title": "득점 보호",
+        "body": "키를 계속 누를 때 자동 반복으로 점수가 쌓이지 않는지 확인"
+      }
+    ],
+    "prompt": "현재 게임의 키보드 접근성만 개선해 줘. 시작·재시작·별은 실제 button으로 만들고 Tab 초점 표시를 선명하게 해. 별에는 “별 잡기”라는 접근 가능한 이름을 줘. 시작 후 별로 초점을 옮기고, 별 위치가 바뀌어도 초점을 유지해. Enter·Space 한 번에 정확히 1점만 주고 키를 누른 채 유지할 때 반복 득점되지 않게 해. 기본 클릭과 키 처리가 중복되지 않게 하고 종료 결과를 읽을 수 있게 해. 전체 코드와 키보드 테스트를 줘. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s34",
+    "module": "finish",
+    "kind": "practice",
+    "title": "키보드 한 판",
+    "subtitle": "실습 · 마우스를 잠시 내려놓기",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "진입",
+        "body": "개선 적용 후 Tab으로 시작 버튼까지 이동. 초점 테두리가 보이는지 확인"
+      },
+      {
+        "title": "진행",
+        "body": "Enter로 시작하고 별에서 Enter·Space를 각각 한 번 누르기. 각 1점인지 확인"
+      },
+      {
+        "title": "경계",
+        "body": "키를 길게 눌러 반복 득점 여부 확인. 종료 후 재시작까지 키보드로 이동"
+      }
+    ]
+  },
+  {
+    "id": "s35",
+    "module": "finish",
+    "kind": "prompt",
+    "title": "나만의 분위기 요청",
+    "subtitle": "기능은 그대로, 시각 요소만",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "선택 범위",
+        "body": "배경·색·문구만 바꾸기. 개인 사진·외부 이미지·음원은 없어도 충분"
+      },
+      {
+        "title": "보존 조건",
+        "body": "별의 크기, 초점 표시, 30초 규칙과 점수 계산 유지"
+      }
+    ],
+    "prompt": "현재 ‘별 잡기’를 밤하늘 탐험 분위기로 꾸며 줘. 외부 이미지·폰트·음원 없이 CSS 색과 배경, 짧은 안내 문구만 바꿔 줘. 제목은 ‘별 잡기’로 유지하고 개인 정보 입력은 만들지 마. 글자는 배경과 뚜렷하게 구분하고 번쩍임·빠른 애니메이션은 넣지 마. 버튼 크기, 초점 표시, 모바일 배치와 모든 게임 규칙·시간 계산은 유지해. 바뀐 시각 요소를 설명하고 전체 코드를 줘. 현재 코드: [붙이기]"
+  },
+  {
+    "id": "s36",
+    "module": "finish",
+    "kind": "practice",
+    "title": "작은 꾸미기",
+    "subtitle": "실습 · 기능을 지키는 변경",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "하나 선택",
+        "body": "사본을 저장하고 배경색 또는 안내 문구 한 가지를 먼저 바꾸기"
+      },
+      {
+        "title": "회귀 확인",
+        "body": "새로고침 후 시작·별 1회 득점·재시작을 다시 시험"
+      },
+      {
+        "title": "정리",
+        "body": "잘 안 읽히거나 기능이 달라졌으면 원상 복구. 개선은 선택 사항"
+      }
+    ]
+  },
+  {
+    "id": "s37",
+    "module": "finish",
+    "kind": "cards",
+    "title": "안전한 문자 표시",
+    "subtitle": "입력 글자를 코드로 해석하지 않기",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "기본 선택",
+        "body": "이 게임에는 이름 입력이 필요 없다. 최종 점수와 고정 문구만으로 충분"
+      },
+      {
+        "title": "안전한 방식",
+        "body": "사용자 글자를 표시해야 한다면 textContent로 넣어 글자로만 다루기"
+      },
+      {
+        "title": "주의할 방식",
+        "body": "사용자 입력을 innerHTML에 직접 넣으면 HTML로 해석될 수 있다. 입력 기능은 빼거나 교사와 검토"
+      }
+    ]
+  },
+  {
+    "id": "s38",
+    "module": "finish",
+    "kind": "steps",
+    "title": "짝 테스트 약속",
+    "subtitle": "만든 사람의 설명 없이 확인",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "역할 교대",
+        "body": "한 명은 조작, 한 명은 관찰. 비밀번호 공유 없이 같은 기기에서 번갈아 시험"
+      },
+      {
+        "title": "같은 순서",
+        "body": "시작 전 별 → 시작 → 별 3회 → 재시작 → 종료까지 기다리기"
+      },
+      {
+        "title": "기록 형식",
+        "body": "동작 / 기대 / 실제 / 통과 여부로 기록. 취향과 오류를 구분"
+      }
+    ]
+  },
+  {
+    "id": "s39",
+    "module": "finish",
+    "kind": "practice",
+    "title": "짝 교차 검증",
+    "subtitle": "실습 · 각자 한 판씩",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "첫 게임",
+        "body": "짝의 게임을 정해진 순서로 시험. 시작 전·종료 후 득점과 초기화 확인"
+      },
+      {
+        "title": "역할 교환",
+        "body": "기기를 넘기거나 자리를 바꿔 다른 게임도 같은 순서로 시험"
+      },
+      {
+        "title": "피드백",
+        "body": "잘된 점 하나와 재현 가능한 오류 하나 전달. 오류가 없으면 조작 개선 한 가지 제안"
+      }
+    ]
+  },
+  {
+    "id": "s40",
+    "module": "finish",
+    "kind": "practice",
+    "title": "마지막 오류 수정",
+    "subtitle": "실습 · 가장 중요한 한 가지",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "우선순위",
+        "body": "게임 중단·잘못된 득점·초기화 실패를 꾸미기보다 먼저 처리"
+      },
+      {
+        "title": "최소 변경",
+        "body": "12번 슬라이드의 오류 보고 형식으로 재현 순서와 실제 결과 전달"
+      },
+      {
+        "title": "동일 재시험",
+        "body": "수정 뒤 같은 순서로 확인. 해결이 어렵다면 안정적인 이전 버전 선택"
+      }
+    ]
+  },
+  {
+    "id": "s41",
+    "module": "finish",
+    "kind": "practice",
+    "title": "최종 출고 점검",
+    "subtitle": "실습 · 관찰한 결과만 체크",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "핵심 규칙",
+        "body": "0점·30초 시작 / 별 1회 1점 / 종료 후 점수 고정 / 재시작 초기화 확인"
+      },
+      {
+        "title": "시간·조작",
+        "body": "탭 이동 시 자동정지 / 계속 재개 / 작은 화면 배치 / 키보드 조작 확인"
+      },
+      {
+        "title": "안전·파일",
+        "body": "개인 정보·외부 통신 없음 / game.html 확장명 / UTF-8 한글 / 새로 열어 실행 확인"
+      }
+    ]
+  },
+  {
+    "id": "s42",
+    "module": "finish",
+    "kind": "steps",
+    "title": "로컬 시연 준비",
+    "subtitle": "게시하지 않아도 완성",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "최종 저장",
+        "body": "최종본은 game.html, 이전 사본은 별도 보관. 현재 브라우저 화면뿐 아니라 파일도 저장"
+      },
+      {
+        "title": "다시 열기",
+        "body": "브라우저에서 파일을 다시 열어 최신 문구와 정상 시작 확인"
+      },
+      {
+        "title": "공유 범위",
+        "body": "기본은 내 기기 시연. 파일 전송은 선생님이 승인한 대상·방법으로만 진행. 공개 게시·수익화 불필요"
+      }
+    ]
+  },
+  {
+    "id": "s43",
+    "module": "finish",
+    "kind": "practice",
+    "title": "30초 미니 발표",
+    "subtitle": "실습 · 짝에게 차례로 설명",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "10초 · 소개",
+        "body": "“내 게임은 30초 동안 별을 잡아 점수를 얻는 게임이다.”"
+      },
+      {
+        "title": "10초 · 변화",
+        "body": "직접 선택한 개선 한 가지와 그 이유 설명"
+      },
+      {
+        "title": "10초 · 증거",
+        "body": "통과한 테스트 하나와 아직 확인하지 못한 점 하나 말하기. 발표 뒤 역할 교대"
+      }
+    ]
+  },
+  {
+    "id": "s44",
+    "module": "finish",
+    "kind": "cards",
+    "title": "배움의 회고",
+    "subtitle": "결과보다 설명할 수 있는 변화",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "내가 한 판단",
+        "body": "AI 제안 중 채택하거나 거절한 것 한 가지와 이유 적기"
+      },
+      {
+        "title": "효과적인 요청",
+        "body": "목표·조건·테스트 중 무엇을 구체화했을 때 도움이 됐는지 적기"
+      },
+      {
+        "title": "다음 실험",
+        "body": "다음에 바꿀 변수 하나와 성공을 확인할 시험 하나 적기"
+      }
+    ]
+  },
+  {
+    "id": "s45",
+    "module": "finish",
+    "kind": "ending",
+    "title": "나의 첫 게임 완성",
+    "subtitle": "설명하고, 확인하고, 한 가지씩 개선",
+    "minutes": 3,
+    "items": [
+      {
+        "title": "완성의 증거",
+        "body": "내가 만든 game.html과 직접 확인한 테스트 기록. 미해결 항목도 정직하게 남기기"
+      },
+      {
+        "title": "제작자의 습관",
+        "body": "AI의 답을 그대로 믿기보다 작은 변경과 실행으로 검증하기"
+      },
+      {
+        "title": "안전한 마무리",
+        "body": "파일 저장과 로컬 시연을 마치고 공용 기기에서는 사용한 AI 계정 로그아웃"
+      }
+    ]
+  }
+];
+</script><script>/* CLASSROOM STUDIO. Framework-free, local-first classroom template.
+ * Transport boundary: readStore / updateStore / storage events.
+ * This is NOT authentication or multi-device networking. Replace this boundary
+ * with authenticated server endpoints before operating a public classroom. */
+(() => {
+'use strict';
+const KEY='webgame_classroom_v1';
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const clone=x=>JSON.parse(JSON.stringify(x));
+const icons={arrow:'<path d="M5 12h14m-5-5 5 5-5 5"/>',book:'<path d="M12 6v15m0-15C9 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-7-1-10 2Z"/>',grid:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',download:'<path d="M12 3v12m-5-5 5 5 5-5M4 15v6h16v-6"/>',copy:'<rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/>',check:'<path d="m5 12 4 4L19 6"/>',message:'<path d="M21 15a3 3 0 0 1-3 3H8l-5 4V5a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z"/>',settings:'<path d="M4 7h16M4 17h16"/><circle cx="8" cy="7" r="3" fill="currentColor"/><circle cx="16" cy="17" r="3" fill="currentColor"/>',expand:'<path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>',play:'<path d="m9 5 11 7-11 7Z"/>',close:'<path d="m6 6 12 12M18 6 6 18"/>',lock:'<rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>'};
+const icon=n=>`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[n]||icons.book}</svg>`;
+const defaults=()=>({schema:1,course:clone(window.COURSE_DEFAULTS),slides:clone(window.SLIDE_DEFAULTS),policies:{locked:false,pdf:true,materials:true,gate:false,questions:true,reviews:true},live:{slide:0,timerEnd:0,timerPaused:0},questions:[],reviews:[],enrollments:[],answers:{},updated:Date.now()});
+let memoryStore=null,storageOK=true;
+function readStore(){if(!storageOK&&memoryStore)return memoryStore;try{const raw=localStorage.getItem(KEY);if(raw){const x=JSON.parse(raw);if(x.schema===1&&x.course&&Array.isArray(x.slides)&&x.slides.length)return x;}}catch(e){storageOK=false;}return memoryStore||defaults();}
+let state=readStore();
+try{if(!localStorage.getItem(KEY))localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageOK=false;memoryStore=state;}
+let personId;try{personId=sessionStorage.getItem('webgame_person')||uid();sessionStorage.setItem('webgame_person',personId);}catch(e){personId=uid();}
+let route=(location.hash.replace('#','').split('/')[0]||'home');
+if(!['home','slides','participate','resources','admin'].includes(route))route='home';
+let localSlide=0,follow=true,moduleFilter='all',adminTab='control',participationTab='questions',modalLastFocus=null,toastTimeout;
+const currentSlide=()=>Math.min(state.slides.length-1,Math.max(0,localSlide));
+const teacherSlide=()=>Math.min(state.slides.length-1,Math.max(0,state.live.slide||0));
+const moduleOf=s=>state.course.modules.find(m=>m.id===s.module)||state.course.modules[0];
+const countPending=()=>state.enrollments.filter(e=>!e.approved).length+state.reviews.filter(r=>!r.approved).length;
+const myEnrollment=()=>state.enrollments.find(e=>e.person===personId);
+function updateStore(fn,redraw=true){state=readStore();fn(state);state.updated=Date.now();memoryStore=state;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){storageOK=false;toast('저장 공간을 사용할 수 없어 이번 화면에서만 유지됩니다.');}if(follow&&state.policies.locked)localSlide=teacherSlide();if(redraw)render();}
+function toast(text){const t=$('#toast');t.textContent=text;t.hidden=false;clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>t.hidden=true,3200);}
+const timeText=t=>new Date(t).toLocaleTimeString('ko-KR',{hour:'2-digit',minute:'2-digit'});
+const byNew=a=>[...a].sort((a,b)=>b.created-a.created);
+function setRoute(r){if(r==='slides'&&follow&&state.policies.locked)localSlide=teacherSlide();if(location.hash==='#'+r){route=r;render();}else location.hash=r;}
+function render(){
+ if(state.policies.locked)localSlide=teacherSlide();
+ document.body.dataset.route=route;
+ document.title=`${state.course.title} · WEB GAME CLASS`;
+ document.querySelectorAll('[data-route]').forEach(b=>{b.classList.toggle('active',b.dataset.route===route);b.setAttribute('aria-current',b.dataset.route===route?'page':'false');});
+ const root=$('#main');root.innerHTML=({home:homePage,slides:slidesPage,participate:participatePage,resources:resourcesPage,admin:adminPage}[route]||homePage)();
+ $('#print-root').innerHTML=state.policies.pdf?state.slides.map((s,i)=>`<section class="print-slide">${stageMarkup(s,i,true)}</section>`).join(''):'';
+ tickTimers();
+}
+function pageHeading(kicker,title,subtitle,actions=''){return `<div class="page-heading"><div><p class="eyebrow">${esc(kicker)}</p><h1>${esc(title)}</h1><p class="lead">${esc(subtitle)}</p></div>${actions}</div>`;}
+const localNotice=()=>`<div class="local-banner">${icon('lock')}<span><strong>내 브라우저에 저장되는 실습용 강의실</strong> · 같은 브라우저의 탭끼리만 연결됩니다. 실제 로그인, 이메일·문자 발송, 다른 기기 연결은 아직 없습니다.${location.protocol==='file:'?' 파일 실행 시 탭 연결은 브라우저 정책에 따라 제한될 수 있습니다.':''}</span></div>`;
+function homePage(){const c=state.course;return `<div class="shell">
+<div class="hero-grid"><section class="hero-panel"><div class="tag-row"><span class="pill">만들며 배우는 코딩 수업</span><span class="eyebrow">IMAGINE. MAKE. PLAY.</span></div><h1>${esc(c.title)}</h1><p class="hero-description">${esc(c.subtitle)}</p><p>${esc(c.description)}</p><div class="button-row"><button class="btn dark" data-route="slides">수업 시작하기 ${icon('arrow')}</button><button class="btn ghost" data-route="resources">실습 자료 보기</button></div><div class="hero-footer"><span>${icon('clock')} ${esc(c.duration)}</span><span>${esc(c.instructor)}</span><span>${esc(c.date)}</span></div></section>
+<aside class="today-card"><div class="card-label"><span>YOUR LEARNING PATH</span><span class="chip">${c.modules.length}개 차시</span></div><h2 class="today-title">아이디어에서<br>나만의 게임까지.</h2><ol class="session-list">${c.modules.map((m,i)=>`<li><span class="session-dot">${String(i+1).padStart(2,'0')}</span><div><strong>${esc(m.title)}</strong><small>${esc(m.summary)}</small></div><span class="session-time">${m.minutes}분</span></li>`).join('')}</ol><p class="muted">${esc(c.audience)}</p></aside></div>
+${localNotice()}
+${gameSection()}
+<div class="stat-grid"><div class="stat-card"><strong>${state.slides.length}<small>장</small></strong><span>웹슬라이드</span></div><div class="stat-card"><strong>${c.modules.length}<small>개</small></strong><span>학습 차시</span></div><div class="stat-card"><strong>1<small>개</small></strong><span>직접 만드는 웹게임</span></div><div class="stat-card"><strong>155<small>분</small></strong><span>수업 135분 + 쉬는 시간 20분</span></div></div>
+<section><div class="section-heading"><div><p class="section-label">CURRICULUM</p><h2>첫 게임부터 나만의 게임까지.</h2></div><button class="btn ghost small" data-route="slides">전체 슬라이드 ${icon('arrow')}</button></div><div class="curriculum-grid">${c.modules.map((m,i)=>`<button class="module-card" data-module-start="${esc(m.id)}"><span class="module-number">${String(i+1).padStart(2,'0')}</span><h3>${esc(m.title)}</h3><p>${esc(m.summary)}</p><div class="module-meta"><span>${m.minutes}분 · ${state.slides.filter(s=>s.module===m.id).length}장</span>${icon('arrow')}</div></button>`).join('')}</div></section>
+<section class="portal-grid"><div class="panel"><p class="section-label">ONE LINK, ONE CLASSROOM</p><h2>듣고, 따라 하고,<br>질문하는 수업.</h2><p class="muted">강의 안내에서 슬라이드, 실습 자료, 질문과 후기까지.<br>여러 링크를 헤매지 않는 작은 학습 공간입니다.</p><div class="button-row"><button class="btn primary" data-route="participate">수업 참여하기 ${icon('message')}</button></div></div><div class="panel"><p class="section-label">AFTER CLASS</p><h2>수강 후기</h2>${publicReviews(2)}<button class="btn ghost small" data-route="participate">후기 남기기 ${icon('arrow')}</button></div></section>
+</div>`;}
+function stageMarkup(s,index,print=false){const mod=moduleOf(s);let content='';
+ if(s.kind==='prompt')content=`<div class="prompt-code">${esc(s.prompt||'')}</div>${print?'':`<button class="btn dark small" data-copy-slide="${index}">${icon('copy')} 프롬프트 복사</button>`}`;
+ else if(s.kind==='quiz'){const mine=state.answers[s.id]?.[personId];content=`<div class="quiz-options">${(s.options||[]).map((o,i)=>`<button class="quiz-option ${mine===i?'selected':''} ${mine!==undefined&&i===s.answer?'correct':''}" data-answer-slide="${index}" data-answer="${i}" ${print?'disabled':''}><span>${String.fromCharCode(65+i)}</span>${esc(o)}</button>`).join('')}</div>${mine!==undefined?`<p class="quiz-feedback">${mine===s.answer?'정답입니다.':'다시 생각해보세요.'} · ${esc(s.items?.find(it=>it.title==='정답 확인')?.body||s.items?.[0]?.body||'응답이 저장되었습니다.')}</p>`:'<p class="muted quiz-feedback">선택하면 이 브라우저의 집계에 반영됩니다.</p>'}`;}
+ else if(s.kind==='practice'||s.kind==='break')content=`<div class="slide-grid">${(s.items||[]).map((it,i)=>slideBox(it,i)).join('')}</div><div class="practice-timer"><span>${s.kind==='break'?'쉬는 시간':'실습 시간'}</span><strong class="timer-display" data-timer>${String(s.minutes||5).padStart(2,'0')}:00</strong>${print?'':`<button class="btn dark small" data-start-practice="${s.minutes||5}">타이머 시작</button>`}</div>`;
+ else content=`<div class="slide-grid ${s.kind==='compare'?'comparison-grid':''}">${(s.items||[]).map((it,i)=>slideBox(it,i)).join('')}</div>`;
+ return `<article class="slide-page ${s.kind==='cover'||s.kind==='ending'?'cover':''} ${s.kind==='prompt'?'prompt-page':''} ${s.kind==='quiz'?'quiz-page':''}" data-kind="${esc(s.kind)}"><div class="slide-kicker"><span>${esc(mod?.title||'강의')}</span><span>WEB GAME / ${String(index+1).padStart(2,'0')}</span></div><div class="slide-content"><h2 class="slide-title">${esc(s.title)}</h2><p class="slide-subtitle">${esc(s.subtitle)}</p>${content}</div><div class="slide-footer"><span>${esc(state.course.title)}</span><span>${String(index+1).padStart(2,'0')} / ${state.slides.length}</span></div></article>`;}
+
+function gameSection(){return `<section class="game-feature"><div><p class="section-label">TODAY’S PROJECT</p><h2>별 하나에서 시작하는<br>나의 첫 웹게임.</h2><p class="muted">30초 안에 움직이는 별을 잡아보세요. 오늘은 이 게임을 AI와 함께 만들고, 규칙과 디자인을 내 방식으로 바꿉니다.</p><div class="button-row"><button class="btn dark" data-action="play-game">완성 게임 미리보기 ${icon('play')}</button><button class="btn ghost" data-action="download-game">게임 HTML 내려받기 ${icon('download')}</button></div><small class="muted">설치 없이 실행 · 오프라인 가능 · 개인정보 입력 없음</small></div><div class="game-poster" aria-hidden="true"><div class="poster-bar"><span>STAR CATCHER</span><span>00:30</span></div><div class="poster-star"><svg viewBox="0 0 100 100" width="90" height="90"><path d="m50 6 13 28 31 4-23 22 6 32-27-15-27 15 6-32L6 38l31-4Z" fill="#e8b62c" stroke="#191a18" stroke-width="4"/></svg></div><div class="poster-base"><strong>별 잡기</strong><span>CLICK. CATCH. CREATE.</span></div></div></section>`;}
+function playGame(){showModal('완성 게임 미리보기', '<iframe id="game-demo-frame" class="game-demo-frame" title="별 잡기 실습 게임" sandbox="allow-scripts allow-same-origin"></iframe>');$('#game-demo-frame').srcdoc=window.WEBGAME_DEMO_HTML||'<p>게임 파일을 불러오지 못했습니다.</p>';}
+
+function slideBox(it,i){return `<div class="slide-box"><span class="slide-box-number">${String(i+1).padStart(2,'0')}</span><div><h3>${esc(it.title)}</h3><p>${esc(it.body)}</p></div></div>`;}
+function slidesPage(){const s=state.slides[currentSlide()];const gated=state.policies.gate&&!myEnrollment()?.approved;
+ return `<div class="shell slides-workspace">${pageHeading('WEB SLIDES','생각을 게임으로 만드는 시간.',`${state.course.title} · ${state.slides.length}장의 웹슬라이드`)}<div class="slide-toolbar"><div class="slide-meta"><span class="chip">${state.policies.locked?'강사 진행 중':'자유롭게 둘러보기'}</span><label class="check-row"><input id="follow-toggle" type="checkbox" ${follow||state.policies.locked?'checked':''} ${state.policies.locked?'disabled':''}>강사 따라가기</label><span class="muted">같은 브라우저 탭 연결</span></div><div class="button-row"><button class="btn ghost small" data-action="grid">${icon('grid')} 목차 <kbd>G</kbd></button><button class="btn ghost small" data-action="print" ${state.policies.pdf?'':'disabled'}>${icon('download')} PDF</button><button class="btn ghost small" data-action="fullscreen" aria-label="슬라이드 전체화면">${icon('expand')}</button></div></div>
+${gated?`<div class="panel gate-panel"><h2>수강 승인을 기다리고 있어요.</h2><p>수업 참여에서 신청한 뒤 관리자 화면에서 승인해 보세요.</p><button class="btn primary" data-action="enroll">수강 신청</button><p class="muted">이 게이트는 로컬 흐름 시연이며 실제 보안 장벽이 아닙니다.</p></div>`:`<div id="slide-stage" class="slide-stage">${stageMarkup(s,currentSlide())}</div>`}
+<div class="slide-controls"><button class="btn ghost" data-action="prev" ${currentSlide()===0||state.policies.locked?'disabled':''}>← 이전</button><div class="slide-nav"><span><strong>${currentSlide()+1}</strong> / ${state.slides.length}</span><div class="progress-track"><div class="progress-fill" style="width:${(currentSlide()+1)/state.slides.length*100}%"></div></div><small>${state.policies.locked?'강사가 이동하면 함께 이동합니다.':'방향키 ← →로 이동할 수 있어요.'}</small></div><button class="btn dark" data-action="next" ${currentSlide()===state.slides.length-1||state.policies.locked?'disabled':''}>다음 →</button></div>
+<div class="slide-outline">${state.course.modules.map(m=>`<button class="outline-btn ${s.module===m.id?'active':''}" data-module-start="${esc(m.id)}" ${state.policies.locked?'disabled':''}>${esc(m.title)}</button>`).join('')}</div><div class="notice">${icon('book')}<span>수업 중 막히는 부분은 <button class="text-button" data-route="participate">질문 대기열</button>에 남겨주세요. 내용은 관리자에서 내 강의에 맞게 바꿀 수 있습니다.</span></div></div>`;}
+function publicReviews(limit=99){const reviews=byNew(state.reviews.filter(r=>r.approved)).slice(0,limit);return reviews.length?`<div class="review-grid">${reviews.map(r=>`<article class="review-card"><div class="stars" aria-label="5점 만점에 ${r.rating}점">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><p>${esc(r.text)}</p><small>익명 수강생 · 승인된 후기</small></article>`).join('')}</div>`:`<div class="empty"><p>아직 공개된 후기가 없어요.</p><small>후기는 이름 없이, 강사 승인 뒤에만 공개됩니다.</small></div>`;}
+function participatePage(){const me=myEnrollment();return `<div class="shell">${pageHeading('PARTICIPATE','혼자 듣지 않는 수업.','질문하고, 결과를 나누고, 오늘의 배움을 남겨보세요.',`<button class="btn ghost" data-action="enroll">${me?(me.approved?'수강 승인 완료':'신청 확인'):'수강 신청'}</button>`)}${localNotice()}<div class="tab-bar" role="tablist">${[['questions','질문 대기열'],['reviews','수강 후기'],['quiz','퀴즈 현황']].map(([k,v])=>`<button role="tab" aria-selected="${participationTab===k}" class="${participationTab===k?'active':''}" data-part-tab="${k}">${v}</button>`).join('')}</div>${participationTab==='questions'?questionsPanel():participationTab==='reviews'?reviewsPanel():quizPanel(false)}</div>`;}
+function questionsPanel(){return `<div class="portal-grid"><section class="panel"><p class="section-label">ASK A QUESTION</p><h2>질문을 남겨주세요.</h2><p class="muted">실명 없이 질문만 공유됩니다. 비밀번호·개인정보는 쓰지 마세요.</p>${state.policies.questions?`<form id="question-form" class="stack"><div class="field"><label for="question-text">궁금한 내용</label><textarea id="question-text" name="text" rows="5" maxlength="600" placeholder="어느 부분에서 막혔는지 구체적으로 적어주세요." required></textarea></div><button class="btn dark" type="submit">질문 등록 ${icon('arrow')}</button></form>`:'<div class="notice">지금은 질문 접수가 닫혀 있습니다.</div>'}</section><section class="panel"><div class="panel-title"><h2>함께 궁금한 질문</h2><span class="count">${state.questions.length}</span></div>${questionList(false)}</section></div>`;}
+function questionList(admin){const q=[...state.questions].sort((a,b)=>Number(a.done)-Number(b.done)||b.voters.length-a.voters.length||a.created-b.created);return q.length?`<div class="stack">${q.map((x,i)=>`<article class="queue-item"><div class="list-content"><span class="badge ${x.done?'approved':'pending'}">${x.done?'답변 완료':'답변 대기'}</span><p>${esc(x.text)}</p><small class="muted">${timeText(x.created)} · 익명 질문</small></div><div class="list-actions">${admin?`<button class="btn ghost small" data-question-done="${x.id}">${x.done?'다시 대기':'답변 완료'}</button><button class="btn ghost small danger" data-question-delete="${x.id}">삭제</button>`:`<button class="btn ghost small" data-question-vote="${x.id}" ${x.voters.includes(personId)?'disabled':''}>공감 ${x.voters.length}</button>`}</div></article>`).join('')}</div>`:'<div class="empty"><p>첫 번째 질문을 기다리고 있어요.</p><small>궁금한 부분을 편하게 남겨주세요.</small></div>';}
+function reviewsPanel(){const mine=state.reviews.find(r=>r.person===personId);return `<div class="portal-grid"><section class="panel"><p class="section-label">REFLECT & SHARE</p><h2>오늘 수업은 어땠나요?</h2><p class="muted">공개할 때 이름은 표시하지 않습니다. 승인된 후기를 수정하면 다시 비공개로 바뀝니다.</p>${state.policies.reviews?`<form id="review-form" class="stack"><div class="field"><label for="review-rating">만족도</label><select id="review-rating" name="rating">${[5,4,3,2,1].map(n=>`<option value="${n}" ${mine?.rating===n?'selected':''}>${n}점 · ${['','아쉬워요','조금 아쉬워요','보통이에요','좋았어요','아주 좋았어요'][n]}</option>`).join('')}</select></div><div class="field"><label for="review-text">후기 한 줄</label><textarea id="review-text" name="text" rows="4" maxlength="500" placeholder="오늘 가져가는 한 가지를 적어주세요." required>${esc(mine?.text||'')}</textarea></div><button class="btn dark" type="submit">${mine?'후기 수정':'후기 제출'} ${icon('arrow')}</button>${mine?`<small class="muted">내 후기 상태: ${mine.approved?'공개 승인됨':'승인 대기 · 비공개'}</small>`:''}</form>`:'<div class="notice">지금은 후기 접수가 닫혀 있습니다.</div>'}</section><section class="panel"><h2>수강생의 한마디</h2>${publicReviews()}</section></div>`;}
+function quizPanel(admin){const quiz=state.slides.filter(s=>s.kind==='quiz');return `<div class="stack">${quiz.map(s=>{const answers=Object.values(state.answers[s.id]||{});const right=answers.filter(a=>a===s.answer).length;return `<section class="panel"><div class="panel-title"><h2>${esc(s.title)}</h2><span class="chip">로컬 집계</span></div><p>${esc(s.subtitle)}</p><div class="stat-grid"><div class="stat-card"><strong>${answers.length}<small>명</small></strong><span>응답</span></div><div class="stat-card"><strong>${right}<small>명</small></strong><span>정답</span></div><div class="stat-card"><strong>${answers.length?Math.round(right/answers.length*100):0}<small>%</small></strong><span>정답률</span></div></div>${s.options.map((o,i)=>`<div class="quiz-result-row"><span>${String.fromCharCode(65+i)}. ${esc(o)}</span><div class="progress-track"><div class="progress-fill" style="width:${answers.length?answers.filter(a=>a===i).length/answers.length*100:0}%"></div></div><strong>${answers.filter(a=>a===i).length}</strong></div>`).join('')}<button class="btn ghost small" data-go-slide="${state.slides.indexOf(s)}">퀴즈 슬라이드 열기 ${icon('arrow')}</button></section>`;}).join('')||'<div class="empty">퀴즈 슬라이드가 없습니다.</div>'}<p class="muted">이 표는 같은 브라우저의 응답을 집계합니다. 평가용 정답 보안이나 실제 수강생 인증 기능은 아닙니다.</p></div>`;}
+function resourcesPage(){const c=state.course;return `<div class="shell">${pageHeading('RESOURCE LIBRARY','필요한 자료를, 한곳에서.','같은 원본에서 꺼내 쓰는 실습 도구와 복사용 프롬프트')}<div class="notice">${icon('book')}<span>이 수업을 위해 새로 작성한 게임 제작 자료입니다. 이름·사진·계정 정보는 입력하지 마세요.</span></div>${state.policies.materials?`<div class="resource-grid">${c.resources.map((r,i)=>`<article class="resource-card"><span class="module-number">${String(i+1).padStart(2,'0')}</span><h2>${esc(r.title)}</h2><p>${esc(r.description)}</p><button class="btn ghost small" data-resource="${esc(r.type)}">${icon('download')} TXT 내려받기</button></article>`).join('')}</div><section class="panel"><div class="section-heading"><div><p class="section-label">COPY & START</p><h2>바로 쓰는 프롬프트</h2></div></div><div class="stack">${state.slides.map((s,i)=>s.kind==='prompt'?`<details class="prompt-details"><summary>${esc(s.title)}</summary><pre>${esc(s.prompt)}</pre><button class="btn dark small" data-copy-slide="${i}">${icon('copy')} 복사</button></details>`:'').join('')}</div></section>`:'<div class="panel empty"><h2>자료는 아직 공개 전이에요.</h2><p>강사가 자료를 공개하면 이곳에서 볼 수 있습니다.</p></div>'}<section class="panel glossary"><p class="section-label">SMALL DICTIONARY</p><h2>낯선 용어, 쉽게 이해하기.</h2><div class="curriculum-grid">${c.glossary.map(g=>`<article><h3>${esc(g.term)}</h3><p class="muted">${esc(g.definition)}</p></article>`).join('')}</div></section></div>`;}
+function adminPage(){const tabs=[['control','진행 제어'],['participation','질문 · 퀴즈'],['approval','신청 · 후기 승인'],['edit','강의 편집'],['settings','저장 · 내보내기']];return `<div class="shell">${pageHeading('TEACHER WORKSPACE','수업 운영의 모든 순간.','진행 상태와 자료 공개, 참여 기록을 한눈에 관리하세요.',`<button class="btn dark" data-action="student-window">수강생 창 열기 ${icon('arrow')}</button>`)}${localNotice()}<div class="notice">${icon('lock')}<span><strong>실제 관리자 인증이 없는 로컬 실습 화면입니다.</strong> 이 파일을 그대로 공개하면 누구나 관리자 화면에 들어올 수 있습니다. 수강 신청도 권한 검증 흐름을 연습하는 기능입니다.</span></div><div class="admin-layout"><aside class="admin-sidebar"><span class="section-label">WORKSPACE</span><nav class="admin-nav" aria-label="관리자 메뉴">${tabs.map(([k,v])=>`<button class="${adminTab===k?'active':''}" data-admin-tab="${k}">${v}${k==='approval'&&countPending()?`<span class="count">${countPending()}</span>`:''}</button>`).join('')}</nav><div class="admin-sidebar-bottom"><span class="status-dot"></span> 브라우저 저장 연결</div></aside><div class="admin-main">${({control:adminControl,participation:()=>`<section class="admin-card"><h2>질문 대기열</h2>${questionList(true)}</section>${quizPanel(true)}`,approval:adminApproval,edit:adminEdit,settings:adminSettings}[adminTab])()}</div></div></div>`;}
+function policy(key,title,desc){return `<label class="switch-row"><span><strong>${esc(title)}</strong><small>${esc(desc)}</small></span><input class="toggle" type="checkbox" data-policy="${key}" aria-label="${esc(title)}" ${state.policies[key]?'checked':''}></label>`;}
+function adminControl(){const s=state.slides[teacherSlide()];return `<div class="admin-grid"><section class="admin-card wide"><div class="admin-card-head"><div><p class="section-label">LIVE CONTROL</p><h2>현재 강의 진행</h2></div><span class="chip">${state.policies.locked?'강사 주도':'자유 열람'}</span></div><div class="admin-kpi"><strong>${String(teacherSlide()+1).padStart(2,'0')}</strong><span>/ ${state.slides.length}</span><div><small>${esc(moduleOf(s)?.title)}</small><h3 class="admin-slide-title">${esc(s.title)}</h3></div></div><div class="button-row"><button class="btn ghost" data-teacher-step="-1" ${teacherSlide()===0?'disabled':''}>← 이전</button><button class="btn dark" data-teacher-step="1" ${teacherSlide()===state.slides.length-1?'disabled':''}>다음 →</button><label class="slide-jump">바로 이동 <select id="teacher-jump" aria-label="강사 슬라이드 바로 이동">${state.slides.map((s,i)=>`<option value="${i}" ${teacherSlide()===i?'selected':''}>${i+1}. ${esc(s.title)}</option>`).join('')}</select></label></div><div class="policy-list">${policy('locked','강사 화면 따라가기 잠금','켜면 수강생 탭은 현재 장을 따라갑니다. 잠금 중에는 임의 이동과 따라가기 해제가 제한됩니다.')}</div></section>
+<section class="admin-card"><div class="admin-card-head"><div><p class="section-label">VISIBILITY</p><h2>자료 공개 정책</h2></div>${icon('settings')}</div><div class="policy-list">${policy('pdf','PDF 저장 허용','강사 화면에도 같은 정책을 적용합니다.')}${policy('materials','자료실 공개','프롬프트·실습 자료 다운로드를 표시합니다.')}${policy('gate','수강 승인 흐름 사용','신청 후 승인하는 로컬 화면 흐름입니다. 실제 인증 아님.')}</div></section>
+<section class="admin-card"><div class="admin-card-head"><div><p class="section-label">CLASS TIMER</p><h2>공용 실습 타이머</h2></div>${icon('clock')}</div><div class="timer-display" data-timer>05:00</div><div class="button-row"><select id="timer-minutes" aria-label="타이머 분"><option value="3">3분</option><option value="5" selected>5분</option><option value="10">10분</option><option value="15">15분</option></select><button class="btn dark small" data-action="timer-start">시작</button><button class="btn ghost small" data-action="timer-pause">일시정지</button><button class="btn ghost small" data-action="timer-reset">초기화</button></div><p class="muted">탭이 느려져도 실제 종료 시각을 기준으로 남은 시간을 계산합니다.</p></section>
+<section class="admin-card"><p class="section-label">PARTICIPATION</p><h2>참여 도구</h2><div class="policy-list">${policy('questions','질문 접수','질문 등록을 열거나 닫습니다.')}${policy('reviews','후기 접수','후기는 제출 후 승인 대기로 저장합니다.')}</div></section><section class="admin-card"><p class="section-label">TODAY’S QUEUE</p><h2>확인이 필요한 항목</h2><div class="stat-grid"><div class="stat-card"><strong>${state.questions.filter(q=>!q.done).length}</strong><span>답변 대기</span></div><div class="stat-card"><strong>${countPending()}</strong><span>승인 대기</span></div></div><button class="btn ghost small" data-admin-tab="approval">신청·후기 확인 ${icon('arrow')}</button></section></div>`;}
+function adminApproval(){return `<div class="stack"><section class="admin-card"><div class="panel-title"><h2>수강 신청</h2><span class="count">${state.enrollments.length}</span></div><p class="muted">이름은 이 관리자 목록에서만 표시합니다. 실제 이메일·문자 알림은 보내지 않습니다.</p>${state.enrollments.length?byNew(state.enrollments).map(e=>`<div class="list-item"><div><strong>${esc(e.name)}</strong><small class="muted"> · ${timeText(e.created)}</small><span class="badge ${e.approved?'approved':'pending'}">${e.approved?'승인됨':'승인 대기'}</span></div><button class="btn ghost small" data-enroll-approve="${e.id}">${e.approved?'승인 취소':'승인'}</button></div>`).join(''):'<div class="empty">신청 내역이 없습니다. 수업 참여에서 신청해보세요.</div>'}</section><section class="admin-card"><h2>후기 공개 승인</h2><p class="muted">기본 비공개 · 건별 승인 · 수정 시 자동 비공개 전환</p>${state.reviews.length?byNew(state.reviews).map(r=>`<article class="queue-item"><div class="list-content"><div class="stars">${'★'.repeat(r.rating)}</div><p>${esc(r.text)}</p><small class="muted">${timeText(r.created)} · 공개 시 이름 없음</small><span class="badge ${r.approved?'approved':'pending'}">${r.approved?'공개 중':'비공개'}</span></div><div class="list-actions"><button class="btn ${r.approved?'ghost':'dark'} small" data-review-approve="${r.id}">${r.approved?'비공개로':'공개 승인'}</button><button class="btn ghost small danger" data-review-delete="${r.id}">삭제</button></div></article>`).join(''):'<div class="empty">제출된 후기가 없습니다.</div>'}</section></div>`;}
+function adminEdit(){const c=state.course;return `<div class="stack"><section class="admin-card"><p class="section-label">MAKE IT YOURS</p><h2>내 강의 정보</h2><form id="course-form" class="stack"><div class="form-grid">${[['title','강의명',c.title],['subtitle','한 줄 소개',c.subtitle],['instructor','강사명',c.instructor],['date','일정',c.date],['duration','총 강의 시간',c.duration],['audience','수강 대상',c.audience]].map(([k,label,v])=>`<div class="field"><label for="course-${k}">${label}</label><input id="course-${k}" name="${k}" value="${esc(v)}" maxlength="100" required></div>`).join('')}</div><div class="field"><label for="course-description">강의 설명</label><textarea id="course-description" name="description" rows="3" maxlength="500" required>${esc(c.description)}</textarea></div><button class="btn dark" type="submit">강의 정보 저장 ${icon('check')}</button></form></section><section class="admin-card"><div class="admin-card-head"><div><p class="section-label">SLIDE EDITOR</p><h2>슬라이드 내용 바꾸기</h2></div><button class="btn ghost small" data-action="add-slide">새 슬라이드</button></div><div class="field"><label for="edit-slide-select">편집할 슬라이드</label><select id="edit-slide-select">${state.slides.map((s,i)=>`<option value="${i}">${i+1}. ${esc(s.title)}</option>`).join('')}</select></div><div id="slide-edit-form-slot">${slideEditor(0)}</div></section><section class="admin-card"><h2>전체 구조 편집</h2><p class="muted">모듈·자료실·용어집과 슬라이드 유형은 설정에서 강의 JSON을 내려받아 수정한 뒤 가져올 수 있습니다. 가져오기 전에 현재 강의를 백업하세요.</p><button class="btn ghost" data-admin-tab="settings">저장·내보내기 ${icon('arrow')}</button></section></div>`;}
+function slideEditor(i){const s=state.slides[i];return `<form id="slide-form" class="stack" data-index="${i}"><div class="form-grid"><div class="field"><label for="slide-title">제목</label><input id="slide-title" name="title" value="${esc(s.title)}" maxlength="60" required></div><div class="field"><label for="slide-module">모듈</label><select id="slide-module" name="module">${state.course.modules.map(m=>`<option value="${esc(m.id)}" ${s.module===m.id?'selected':''}>${esc(m.title)}</option>`).join('')}</select></div></div><div class="field"><label for="slide-subtitle">설명</label><input id="slide-subtitle" name="subtitle" value="${esc(s.subtitle)}" maxlength="130"></div><div class="field"><label for="slide-items">카드 내용 · 한 줄에 제목 | 설명 (최대 4줄)</label><textarea id="slide-items" name="items" rows="5">${esc((s.items||[]).map(it=>it.title+' | '+it.body).join('\n'))}</textarea></div>${s.kind==='prompt'?`<div class="field"><label for="slide-prompt">복사할 프롬프트</label><textarea id="slide-prompt" name="prompt" rows="5" maxlength="1200">${esc(s.prompt)}</textarea></div>`:''}${s.kind==='quiz'?`<div class="field"><label for="slide-options">보기 · 한 줄에 하나 (2~4개)</label><textarea id="slide-options" name="options" rows="4">${esc(s.options.join('\n'))}</textarea></div><div class="field"><label for="slide-answer">정답 번호 (1부터)</label><input id="slide-answer" name="answer" type="number" min="1" max="4" value="${s.answer+1}" required></div>`:''}${['practice','break'].includes(s.kind)?`<div class="field"><label for="slide-minutes">실습 시간 (분)</label><input id="slide-minutes" name="minutes" type="number" min="1" max="60" value="${s.minutes||5}" required></div>`:''}<div class="button-row"><button class="btn dark" type="submit">이 슬라이드 저장</button><button class="btn ghost small" type="button" data-go-slide="${i}">미리보기</button><button class="btn ghost small danger" type="button" data-delete-slide="${i}" ${state.slides.length<2?'disabled':''}>삭제</button></div></form>`;}
+function adminSettings(){return `<div class="stack"><section class="admin-card"><p class="section-label">YOUR CONTENT, YOUR FILE</p><h2>저장과 이동</h2><p>강의 내용과 운영 기록은 이 브라우저에 저장됩니다. 브라우저 데이터를 지우면 사라지므로 파일로 백업해두세요.</p><div class="settings-grid"><div class="panel"><h3>강의 콘텐츠 내보내기</h3><p class="muted">강의 정보와 슬라이드만 포함합니다. 이름·신청·질문·후기는 포함하지 않습니다.</p><button class="btn dark" data-action="export-course">${icon('download')} 강의 JSON</button></div><div class="panel"><h3>강의 콘텐츠 가져오기</h3><p class="muted">강의 JSON 또는 전체 백업을 가져옵니다. 현재 내용은 교체 전 자동 백업합니다.</p><label class="btn ghost" for="import-file">JSON 파일 선택</label><input id="import-file" type="file" accept="application/json,.json" hidden></div></div><div class="button-row"><button class="btn ghost" data-action="export-records">운영 기록 백업</button><button class="btn ghost danger" data-action="reset-records">참여 기록 초기화</button><button class="btn ghost danger" data-action="reset-all">샘플 강의로 초기화</button></div></section><section class="admin-card"><p class="section-label">BEFORE YOU GO LIVE</p><h2>실제 수업 공개 전 확인</h2><ul class="safe-list"><li>현재 버전에는 로그인·서버 권한 검사가 없습니다. 실제 수강생 개인정보를 입력하지 마세요.</li><li>현재 동기화·질문·퀴즈·후기·신청은 같은 브라우저 탭 범위입니다. 다른 PC나 휴대폰과는 연결되지 않습니다.</li><li>서로 다른 기기를 연결하려면 Firebase 또는 인증된 백엔드와 접근 규칙을 붙여야 합니다.</li><li>PDF·자료실 스위치와 수강 승인 게이트는 화면 정책입니다. 공개 파일 복사나 소스 열람을 막는 DRM이 아닙니다.</li><li>이메일·문자 알림은 연결하지 않았으며 비용이 발생하지 않습니다.</li><li>서비스 계정 키·비밀번호·명단을 공개 폴더에 넣지 마세요.</li></ul></section></div>`;}
+function setTeacherSlide(n){updateStore(s=>s.live.slide=Math.min(s.slides.length-1,Math.max(0,n)));}
+function moveSlide(delta){if(state.policies.locked){toast('강사가 현재 슬라이드를 진행하고 있습니다.');return;}localSlide=Math.min(state.slides.length-1,Math.max(0,currentSlide()+delta));render();}
+function goSlide(i){if(state.policies.locked&&route!=='admin'){toast('강사 진행 중에는 다른 장으로 이동할 수 없습니다.');return;}localSlide=Math.min(state.slides.length-1,Math.max(0,i));setRoute('slides');}
+function showModal(title,body,footer=''){modalLastFocus=document.activeElement;$('#modal-root').innerHTML=`<div class="modal-backdrop"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-head"><h2 id="modal-title">${esc(title)}</h2><button class="btn ghost small" data-action="close-modal" aria-label="닫기">${icon('close')}</button></div><div class="modal-body">${body}</div>${footer?`<div class="modal-footer">${footer}</div>`:''}</section></div>`;$('#modal-root').querySelector('button,input,select,textarea')?.focus();}
+function closeModal(){const old=modalLastFocus;$('#modal-root').innerHTML='';if(old?.isConnected)old.focus();}
+function gridModal(){showModal('전체 슬라이드 · '+state.slides.length+'장',`<div class="grid-thumbs">${state.slides.map((s,i)=>`<button class="thumb-btn ${currentSlide()===i?'active':''}" data-grid-slide="${i}" ${state.policies.locked?'disabled':''}><div class="thumb-preview" aria-hidden="true">${stageMarkup(s,i,true).replace(/<button\b[^>]*>/g,'<span>').replace(/<\/button>/g,'</span>')}</div><span class="thumb-number">${String(i+1).padStart(2,'0')} · ${esc(moduleOf(s)?.title)}</span><span class="thumb-title">${esc(s.title)}</span></button>`).join('')}</div>`);$('#modal-root .modal').classList.add('grid-modal');}
+function enrollmentModal(){const me=myEnrollment();showModal('수강 신청',`<p class="muted">이름은 관리자 목록에만 표시됩니다. 실제 개인정보 대신 테스트 이름을 사용하세요.</p><form id="enroll-form" class="stack"><div class="field"><label for="enroll-name">표시 이름</label><input id="enroll-name" name="name" maxlength="30" value="${esc(me?.name||'')}" placeholder="예: 연습 수강생" required></div><p>신청 상태: <strong>${me?(me.approved?'승인 완료':'승인 대기'):'아직 신청하지 않음'}</strong></p><button type="submit" class="btn dark">${me?'신청 정보 수정':'신청하기'}</button><small class="muted">실제 인증·메일 발송 없이 같은 브라우저에서만 동작합니다.</small></form>`);}
+function confirmAction(title,text,action){showModal(title,`<p>${esc(text)}</p>`,`<button class="btn ghost" data-action="close-modal">취소</button><button class="btn danger" data-confirm="${action}">확인하고 진행</button>`);}
+async function copyText(text){try{if(!navigator.clipboard?.writeText)throw Error();await Promise.race([navigator.clipboard.writeText(text),new Promise((_,r)=>setTimeout(()=>r(Error()),700))]);toast('프롬프트를 복사했습니다.');}catch(e){showModal('텍스트 복사',`<p class="muted">아래 내용을 선택해 복사하세요.</p><textarea id="copy-fallback" rows="8" readonly>${esc(text)}</textarea>`);const a=$('#copy-fallback');a.focus();a.select();try{if(document.execCommand('copy')){closeModal();toast('프롬프트를 복사했습니다.');}}catch(e){}}}
+function download(name,text,type='text/plain;charset=utf-8'){const blob=new Blob([text],{type});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);}
+function exportCourse(){download('my-course.json',JSON.stringify({format:'classroom-course',version:1,course:state.course,slides:state.slides},null,2),'application/json');}
+function resourceText(type){if(type==='prompts')return state.slides.filter(s=>s.kind==='prompt').map(s=>s.title+'\n\n'+s.prompt).join('\n\n----------\n\n');if(type==='notes')return state.course.title+'\n수업 진행 · 총 155분\n\n1차시 00:00~00:45 첫 게임 제작\n휴식 00:45~00:55\n2차시 00:55~01:40 규칙과 재미\n휴식 01:40~01:50\n3차시 01:50~02:35 나만의 게임 완성\n\n내 게임 제목: \n게임 규칙: \n개선한 점: \n테스트 결과: \n남은 질문: \n\nAI는 선생님이 허용한 계정과 도구로 사용하고 개인정보를 입력하지 않습니다. 계정 생성·로그인·AI API 자동 연결은 제공하지 않습니다.\n';return state.course.title+'\n게임 완성 체크리스트\n\n[ ] game.html을 UTF-8로 저장, 확장자 .txt 아님\n[ ] 시작 전 점수 0점 · 남은 시간 30초\n[ ] 별 클릭마다 1점 증가\n[ ] 종료 후 추가 득점 불가\n[ ] 다시 시작하면 점수·시간 초기화\n[ ] 일시정지 후 재개하면 남은 시간 유지\n[ ] 모바일에서 별이 화면 밖으로 나가지 않음\n[ ] 키보드 Tab과 Enter로 조작 가능\n[ ] 실명·학교명·사진·계정·비밀키 미포함\n[ ] 오류를 재현하고 변경은 한 번에 하나씩 요청\n[ ] 공유 전 선생님 확인\n\n현재 강의실은 브라우저 로컬 버전입니다. 다른 기기 간 질문·화면 동기화와 실제 관리자 인증은 연결되어 있지 않습니다.\n';}
+function startTimer(minutes){updateStore(s=>{const seconds=Math.max(1,Number(minutes)||5)*60;s.live.timerEnd=Date.now()+seconds*1000;s.live.timerPaused=seconds;});}
+function tickTimers(){const seconds=state.live.timerEnd?Math.max(0,Math.ceil((state.live.timerEnd-Date.now())/1000)):state.live.timerPaused||0;const text=seconds?`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`:state.live.timerEnd?'00:00':route==='slides'&&state.slides[currentSlide()]&&['practice','break'].includes(state.slides[currentSlide()]?.kind)?String(state.slides[currentSlide()].minutes||5).padStart(2,'0')+':00':'05:00';document.querySelectorAll('#main [data-timer]').forEach(el=>{el.textContent=text;el.classList.toggle('timer-ended',!!state.live.timerEnd&&seconds===0);});}
+function printSlides(){if(!state.policies.pdf){toast('현재 PDF 저장이 허용되지 않습니다.');return;}$('#print-root').innerHTML=state.slides.map((s,i)=>`<section class="print-slide">${stageMarkup(s,i,true)}</section>`).join('');window.print();}
+function validateCourse(x){const fail=m=>{throw Error(m);};if(x?.format!=='classroom-course'||x.version!==1)fail('지원하는 강의 JSON 형식이 아닙니다.');const c=x.course;if(!c||!Array.isArray(c.modules)||c.modules.length<1||c.modules.length>12)fail('학습 모듈을 1~12개 넣어주세요.');['title','subtitle','instructor','date','duration','audience','description'].forEach(k=>{if(typeof c[k]!=='string'||c[k].length>2000)fail('강의 정보 항목을 확인해주세요: '+k);});const ids=c.modules.map(m=>m.id);if(new Set(ids).size!==ids.length||ids.some(id=>typeof id!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(id)||['__proto__','constructor','prototype'].includes(id)))fail('모듈 ID가 올바르지 않습니다.');c.modules.forEach(m=>{if(typeof m.title!=='string'||typeof m.summary!=='string'||!Number.isFinite(m.minutes)||m.minutes<0)fail('모듈 내용을 확인해주세요.');});if(!Array.isArray(c.resources)||!c.resources.every(r=>typeof r.title==='string'&&typeof r.description==='string'&&['checklist','notes','prompts'].includes(r.type)))fail('자료실 형식이 잘못되었습니다.');if(!Array.isArray(c.glossary)||!c.glossary.every(g=>typeof g.term==='string'&&typeof g.definition==='string'))fail('용어집 형식을 확인해주세요.');if(!Array.isArray(x.slides)||!x.slides.length||x.slides.length>150)fail('슬라이드는 1~150장이어야 합니다.');const slideIds=new Set();x.slides.forEach((s,i)=>{if(!s.id||typeof s.id!=='string'||!/^[A-Za-z0-9_-]{1,80}$/.test(s.id)||['__proto__','constructor','prototype'].includes(s.id)||slideIds.has(s.id))fail('슬라이드 ID가 없거나 중복되었습니다.');slideIds.add(s.id);if(!ids.includes(s.module)||!['cover','cards','steps','compare','prompt','quiz','practice','break','ending'].includes(s.kind)||typeof s.title!=='string'||typeof s.subtitle!=='string')fail(`${i+1}번 슬라이드 기본 정보가 올바르지 않습니다.`);if(!Array.isArray(s.items)||s.items.length>4||s.items.some(it=>typeof it.title!=='string'||typeof it.body!=='string'))fail(`${i+1}번 슬라이드 카드 형식이 올바르지 않습니다.`);if(s.kind==='quiz'&&(!Array.isArray(s.options)||s.options.length<2||s.options.length>4||!s.options.every(o=>typeof o==='string')||!Number.isInteger(s.answer)||s.answer<0||s.answer>=s.options.length))fail('퀴즈 보기·정답을 확인해주세요.');if(s.kind==='prompt'&&typeof s.prompt!=='string')fail('프롬프트 내용을 확인해주세요.');});return true;}
+function backupState(x){
+ if(x?.format!=='classroom-backup'||x.version!==1||!x.state)throw Error('전체 백업 형식이 올바르지 않습니다.');
+ const a=x.state;validateCourse({format:'classroom-course',version:1,course:a.course,slides:a.slides});const out=defaults();out.course=clone(a.course);out.slides=clone(a.slides);
+ const str=(v,n=800)=>typeof v==='string'?v.slice(0,n):'';const num=v=>Number.isFinite(Number(v))?Number(v):0;
+ for(const k of Object.keys(out.policies))out.policies[k]=typeof a.policies?.[k]==='boolean'?a.policies[k]:out.policies[k];
+ for(const k of ['questions','reviews','enrollments'])if(a[k]!==undefined&&(!Array.isArray(a[k])||a[k].length>5000))throw Error('운영 기록 배열을 확인해주세요.');
+ out.questions=(a.questions||[]).map(q=>({id:str(q.id,80)||uid(),person:str(q.person,80),text:str(q.text),created:num(q.created),done:!!q.done,voters:Array.isArray(q.voters)?q.voters.filter(v=>typeof v==='string').slice(0,5000):[]}));
+ out.reviews=(a.reviews||[]).map(r=>({id:str(r.id,80)||uid(),person:str(r.person,80),text:str(r.text),rating:Math.max(1,Math.min(5,Math.round(num(r.rating))||5)),created:num(r.created),approved:!!r.approved}));
+ out.enrollments=(a.enrollments||[]).map(e=>({id:str(e.id,80)||uid(),person:str(e.person,80),name:str(e.name,80),created:num(e.created),approved:!!e.approved}));
+ out.live={slide:Math.max(0,Math.min(out.slides.length-1,Math.trunc(num(a.live?.slide)))),timerEnd:0,timerPaused:Math.max(0,num(a.live?.timerPaused))};out.answers={};
+ for(const slide of out.slides.filter(s=>s.kind==='quiz')){const values=a.answers?.[slide.id];if(values&&typeof values==='object'){out.answers[slide.id]={};for(const [person,answer]of Object.entries(values)){if(/^[A-Za-z0-9_-]{1,80}$/.test(person)&&!['__proto__','constructor','prototype'].includes(person)&&Number.isInteger(answer)&&answer>=0&&answer<slide.options.length)out.answers[slide.id][person]=answer;}}}
+ return out;
+}
+async function importCourse(file){if(!file)return;try{if(file.size>2e6)throw Error('2MB 이하의 파일을 선택해주세요.');const x=JSON.parse(await file.text());const isBackup=x.format==='classroom-backup';let replacement;if(isBackup)replacement=backupState(x);else{validateCourse(x);replacement={...defaults(),course:clone(x.course),slides:clone(x.slides)};}showModal(isBackup?'전체 백업을 복원할까요?':'새 강의로 교체할까요?',`<p><strong>${esc(replacement.course.title)}</strong> · ${replacement.slides.length}장</p><p>${isBackup?'강의 콘텐츠와 운영 기록을 함께 복원합니다.':'새 강의를 가져오면 기존 참여 기록은 초기화됩니다.'} 현재 상태는 먼저 전체 백업 파일로 내려받습니다.</p>`,`<button class="btn ghost" data-action="close-modal">취소</button><button class="btn dark" id="confirm-import">백업 후 ${isBackup?'복원':'가져오기'}</button>`);$('#confirm-import').onclick=()=>{download('classroom-backup-before-import.json',JSON.stringify({format:'classroom-backup',version:1,state},null,2),'application/json');updateStore(s=>{Object.assign(s,replacement);});localSlide=0;closeModal();toast(isBackup?'전체 백업을 복원했습니다.':'새 강의 콘텐츠를 가져왔습니다.');};}catch(e){toast('가져오기 실패: '+e.message);}}
+
+// Delegated events keep re-rendered views interactive without duplicate handlers.
+document.addEventListener('click',e=>{const b=e.target.closest('button,a[data-route],label[data-action]');if(!b)return;const d=b.dataset;
+ if(d.route){e.preventDefault();setRoute(d.route);return;}
+ if(d.adminTab){adminTab=d.adminTab;render();return;}
+ if(d.partTab){participationTab=d.partTab;render();return;}
+ if(d.moduleStart){const i=state.slides.findIndex(s=>s.module===d.moduleStart);goSlide(Math.max(0,i));return;}
+ if(d.goSlide!==undefined){goSlide(Number(d.goSlide));return;}
+ if(d.gridSlide!==undefined){closeModal();goSlide(Number(d.gridSlide));return;}
+ if(d.copySlide!==undefined){copyText(state.slides[Number(d.copySlide)].prompt||'');return;}
+ if(d.answerSlide!==undefined){const s=state.slides[Number(d.answerSlide)];updateStore(x=>{x.answers[s.id]??={};x.answers[s.id][personId]=Number(d.answer);});toast('응답이 로컬 집계에 반영되었습니다.');return;}
+ if(d.startPractice){startTimer(Number(d.startPractice));return;}
+ if(d.teacherStep){setTeacherSlide(teacherSlide()+Number(d.teacherStep));return;}
+ if(d.questionVote){updateStore(s=>{const q=s.questions.find(q=>q.id===d.questionVote);if(q&&!q.voters.includes(personId))q.voters.push(personId);});return;}
+ if(d.questionDone){updateStore(s=>{const q=s.questions.find(q=>q.id===d.questionDone);if(q)q.done=!q.done;});return;}
+ if(d.questionDelete){updateStore(s=>s.questions=s.questions.filter(q=>q.id!==d.questionDelete));return;}
+ if(d.reviewApprove){updateStore(s=>{const r=s.reviews.find(r=>r.id===d.reviewApprove);if(r)r.approved=!r.approved;});return;}
+ if(d.reviewDelete){updateStore(s=>s.reviews=s.reviews.filter(r=>r.id!==d.reviewDelete));return;}
+ if(d.enrollApprove){updateStore(s=>{const a=s.enrollments.find(a=>a.id===d.enrollApprove);if(a)a.approved=!a.approved;});return;}
+ if(d.resource){if(!state.policies.materials){toast('자료가 비공개 상태입니다.');return;}download(`classroom-${d.resource}.txt`,resourceText(d.resource));return;}
+ if(d.deleteSlide!==undefined){confirmAction('슬라이드 삭제','이 장을 삭제하면 퀴즈 응답도 함께 삭제됩니다.','delete-slide-'+d.deleteSlide);return;}
+ if(d.confirm){const action=d.confirm;closeModal();if(action==='reset-all'){updateStore(s=>Object.assign(s,defaults()));localSlide=0;}else if(action==='reset-records'){updateStore(s=>{s.questions=[];s.reviews=[];s.enrollments=[];s.answers={};s.live={slide:0,timerEnd:0,timerPaused:0};});}else if(action==='export-records'){download('classroom-records.json',JSON.stringify({format:'classroom-backup',version:1,exported:new Date().toISOString(),state},null,2),'application/json');}else if(action.startsWith('delete-slide-')){const i=Number(action.replace('delete-slide-',''));updateStore(s=>{if(s.slides.length<2)return;delete s.answers[s.slides[i].id];s.slides.splice(i,1);s.live.slide=Math.min(s.live.slide,s.slides.length-1);});localSlide=Math.min(localSlide,state.slides.length-1);}render();toast('변경 내용을 저장했습니다.');return;}
+ switch(d.action){case'play-game':playGame();break;case'download-game':download('별잡기.html',window.WEBGAME_DEMO_HTML,'text/html;charset=utf-8');break;case'prev':moveSlide(-1);break;case'next':moveSlide(1);break;case'grid':gridModal();break;case'print':printSlides();break;case'fullscreen':{const el=$('#slide-stage');if(el?.requestFullscreen)el.requestFullscreen().catch(()=>toast('이 브라우저에서는 전체화면을 사용할 수 없습니다.'));else toast('이 브라우저에서는 전체화면을 지원하지 않습니다.');break;}case'close-modal':closeModal();break;case'enroll':enrollmentModal();break;case'student-window':window.open(location.href.split('#')[0]+'#slides','_blank','noopener');break;case'export-course':exportCourse();break;case'export-records':confirmAction('운영 기록 내보내기','신청 이름과 질문·후기가 포함됩니다. 파일을 공개 저장소에 올리지 마세요.','export-records');break;case'reset-records':confirmAction('참여 기록 초기화','신청·질문·후기·퀴즈 응답과 진행 상태가 삭제됩니다. 먼저 운영 기록을 백업하세요.','reset-records');break;case'reset-all':confirmAction('샘플 강의로 초기화','편집한 강의와 모든 운영 기록이 삭제됩니다. 먼저 콘텐츠와 운영 기록을 백업하세요.','reset-all');break;case'timer-start':startTimer(Number($('#timer-minutes')?.value||5));break;case'timer-pause':updateStore(s=>{s.live.timerPaused=s.live.timerEnd?Math.max(0,Math.ceil((s.live.timerEnd-Date.now())/1000)):s.live.timerPaused;s.live.timerEnd=0;});break;case'timer-reset':updateStore(s=>{s.live.timerEnd=0;s.live.timerPaused=0;});break;case'add-slide':updateStore(s=>s.slides.push({id:uid(),module:s.course.modules[0].id,kind:'cards',title:'새 슬라이드',subtitle:'여기에 핵심 내용을 적어주세요.',items:[{title:'핵심 하나',body:'한 장에는 하나의 메시지만 담습니다.'}]}));$('#edit-slide-select').value=String(state.slides.length-1);$('#slide-edit-form-slot').innerHTML=slideEditor(state.slides.length-1);break;}
+});
+document.addEventListener('change',e=>{const el=e.target;if(el.dataset.policy){updateStore(s=>{s.policies[el.dataset.policy]=el.checked;});return;}if(el.id==='follow-toggle'){follow=el.checked;if(follow&&state.policies.locked)localSlide=teacherSlide();render();return;}if(el.id==='teacher-jump'){setTeacherSlide(Number(el.value));return;}if(el.id==='edit-slide-select'){$('#slide-edit-form-slot').innerHTML=slideEditor(Number(el.value));return;}if(el.id==='import-file')importCourse(el.files[0]);});
+document.addEventListener('submit',e=>{const f=e.target;e.preventDefault();const fd=new FormData(f);
+ if(f.id==='question-form'){const text=String(fd.get('text')).trim();if(!text)return;if(!state.policies.questions){toast('질문 접수가 닫혀 있습니다.');return;}updateStore(s=>s.questions.push({id:uid(),person:personId,text,created:Date.now(),done:false,voters:[]}));toast('질문을 등록했습니다.');}
+ else if(f.id==='review-form'){const text=String(fd.get('text')).trim();if(!text)return;if(!state.policies.reviews){toast('후기 접수가 닫혀 있습니다.');return;}const rating=Math.max(1,Math.min(5,Number(fd.get('rating'))||5));updateStore(s=>{const old=s.reviews.find(r=>r.person===personId);if(old){Object.assign(old,{text,rating,approved:false,created:Date.now()});}else s.reviews.push({id:uid(),person:personId,text,rating,approved:false,created:Date.now()});});toast('후기를 저장했습니다. 승인 전에는 비공개입니다.');}
+ else if(f.id==='enroll-form'){const name=String(fd.get('name')).trim();if(!name)return;updateStore(s=>{const old=s.enrollments.find(e=>e.person===personId);if(old)Object.assign(old,{name});else s.enrollments.push({id:uid(),person:personId,name,approved:false,created:Date.now()});});closeModal();toast('신청했습니다. 관리자 화면에서 승인할 수 있습니다.');}
+ else if(f.id==='course-form'){updateStore(s=>{['title','subtitle','instructor','date','duration','audience','description'].forEach(k=>s.course[k]=String(fd.get(k)).trim());});toast('강의 정보를 저장했습니다.');}
+ else if(f.id==='slide-form'){const i=Number(f.dataset.index);const items=String(fd.get('items')).split('\n').filter(x=>x.trim()).map(line=>{const [title,...rest]=line.split('|');return{title:title.trim(),body:rest.join('|').trim()};});if(items.length>4){toast('카드는 최대 4개입니다.');return;}if(state.slides[i].kind==='quiz'){const options=String(fd.get('options')).split('\n').map(x=>x.trim()).filter(Boolean);const answer=Number(fd.get('answer'))-1;if(options.length<2||options.length>4||answer<0||answer>=options.length){toast('보기 2~4개와 올바른 정답 번호를 입력하세요.');return;}}
+ updateStore(s=>{const slide=s.slides[i];Object.assign(slide,{title:String(fd.get('title')).trim(),subtitle:String(fd.get('subtitle')).trim(),module:String(fd.get('module')),items});if(slide.kind==='prompt')slide.prompt=String(fd.get('prompt'));if(['practice','break'].includes(slide.kind))slide.minutes=Number(fd.get('minutes'));if(slide.kind==='quiz'){slide.options=String(fd.get('options')).split('\n').map(x=>x.trim()).filter(Boolean);slide.answer=Number(fd.get('answer'))-1;delete s.answers[slide.id];}});$('#edit-slide-select').value=String(i);$('#slide-edit-form-slot').innerHTML=slideEditor(i);toast('슬라이드와 관리자 목록을 함께 갱신했습니다.');}
+});
+window.addEventListener('hashchange',()=>{const r=location.hash.replace('#','').split('/')[0];route=['home','slides','participate','resources','admin'].includes(r)?r:'home';render();window.scrollTo({top:0});});
+window.addEventListener('storage',e=>{if(e.key!==KEY)return;const active=document.activeElement;const typing=active?.matches('input:not([type=checkbox]),textarea');state=readStore();if(follow&&state.policies.locked)localSlide=teacherSlide();if(typing){let note=$('#remote-update-note');if(!note){note=document.createElement('button');note.id='remote-update-note';note.className='remote-update-note btn primary';note.textContent='다른 탭의 변경 사항 보기 · 작성 내용은 먼저 저장하세요';note.onclick=()=>{note.remove();render();};document.body.append(note);}return;}render();});
+document.addEventListener('keydown',e=>{const modal=$('#modal-root .modal');if(modal){if(e.key==='Escape'){closeModal();return;}if(e.key==='Tab'){const f=[...modal.querySelectorAll('button:not([disabled]),input,select,textarea,a[href]')].filter(x=>!x.hidden);if(f.length){const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}}return;}if(e.target.matches('input,textarea,select')||e.ctrlKey||e.metaKey||e.altKey)return;if(route==='slides'){if(e.key==='ArrowRight'){e.preventDefault();moveSlide(1);}if(e.key==='ArrowLeft'){e.preventDefault();moveSlide(-1);}if(e.key.toLowerCase()==='g')gridModal();if(e.key.toLowerCase()==='p')printSlides();}if(route==='admin'&&adminTab==='control'){if(e.key==='ArrowRight')setTeacherSlide(teacherSlide()+1);if(e.key==='ArrowLeft')setTeacherSlide(teacherSlide()-1);}});
+// A running timer is calculated from an absolute end time, not decremented ticks.
+setInterval(tickTimers,250);
+render();
+if(!storageOK)toast('브라우저 저장이 제한되어 새로고침하면 기록이 사라질 수 있습니다.');
+})();
+</script>
+</body></html>
