@@ -1,5 +1,12 @@
 # 웹게임교실
 
+## 온라인 주소
+
+- 실행 사이트: https://jeonggunhwa.github.io/webgame-classroom/
+- 소스 저장소: https://github.com/jeonggunhwa/webgame-classroom
+- GitHub Pages는 `main` 브랜치의 루트에서 자동 배포합니다.
+- 관리자 화면에서 바꾼 내용은 해당 브라우저에만 저장됩니다. 사이트 전체를 수정하려면 깃허브 소스를 수정해야 합니다.
+
 바이브코딩으로 나만의 첫 웹게임을 만드는 중학교 1학년 대상 수업입니다. 학교명 없이 재사용할 수 있습니다.
 
 ## 구성
