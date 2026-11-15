@@ -5,6 +5,7 @@
 ## 사용 주소
 
 - 수업: https://jeonggunhwa.github.io/webgame-classroom/
+- Sites: https://webgame-classroom.wjdrmsghk.chatgpt.site/
 - 강사: https://jeonggunhwa.github.io/webgame-classroom/#admin
 - 소스: https://github.com/jeonggunhwa/webgame-classroom
 - Firebase 콘솔: https://console.firebase.google.com/project/web-game-classroom/overview
